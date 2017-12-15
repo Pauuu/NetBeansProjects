@@ -1,1 +1,1 @@
-NetBeansProjectsX
+NetBeansProjects
