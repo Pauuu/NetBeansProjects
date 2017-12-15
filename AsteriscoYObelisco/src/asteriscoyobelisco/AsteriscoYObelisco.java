@@ -95,9 +95,11 @@ public class AsteriscoYObelisco {
     }
 
     private static void trianguloVacio1(int base) {
-        for (int row = 0, col = 0; row <= base || col <= base; row++, col++) {
-            System.out.print((col == 0 || col == row || row == base) ? "*" : " ");
-            System.out.print((col == base) ? "" : "\n");
+        for (int row = 0; row <= base; row++) {
+            for (int col = 0; col <= base; col++) {
+                System.out.print((col == 0 || col == row || row == base) ? "*" : " ");
+            }
+            System.out.println();
         }
     }
 

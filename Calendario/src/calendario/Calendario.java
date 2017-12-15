@@ -8,25 +8,35 @@ public class Calendario {
      */
     public static void main(String[] args) {
         calendario();
+        meses(2);
     }
 
     private static void calendario() {
         int dia;
         int dS; // dia semana (Lun-Dom)
-        for (dia = 1, dS = 1;; dia++, dS++) {
-            System.out.print(dia + " ");
-            if(dS>7){
-                dS = 1;
-                System.out.println();
-            }
+        dS = 1;
+        
+        for (int mes = 1; mes <= 12; mes++) {
             
-            if(dia >= 31){
-                dia = 1;
+            System.out.println("\n \n" + meses(mes));
+            System.out.print("L  M  X  J  V  S  D \n\n");
+
+            for (dia = 1; dia <= 31; dia++, dS++) {
+                System.out.print((dia < 10) ? dia + "  " : dia + " ");
+                
+                if (dS >= 7) {
+                    dS = 0;
+                    System.out.println();
+                }
+
+                if (dia > 31) {
+                    dia = 0;
+                }
             }
         }
     }
 
-    private static void cambioMes(int mes) {
+    private static String meses(int mes) {
 
         String mesString;
 
@@ -72,6 +82,6 @@ public class Calendario {
                 break;
         }
 
-        System.out.println(mesString);
+        return (mesString);
     }
 }
