@@ -18,9 +18,10 @@ public class Calendario {
         //Bluce sobre meses
 
         for (int mes = 1; mes <= 12; mes++) {
+// prueba prueba prueba
             System.out.println(meses(mes));
             System.out.println("L  M  X  J  V  S  D");
-            
+
             for (int espacio = 0; espacio < dS; espacio++) {
                 System.out.print("   ");
             }
