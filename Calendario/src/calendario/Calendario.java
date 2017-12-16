@@ -13,26 +13,28 @@ public class Calendario {
 
     private static void calendario() {
         int dia;
-        int dS; // dia semana (Lun-Dom)
+        int dS;
         dS = 0;
-
+        //Bluce sobre meses
+        
         for (int mes = 1; mes <= 12; mes++) {
-
+            //Bucle sobre dias más dias de la semana (Lun, Mar, Mie, ... Dom)
+            
             for (dia = 1; dia <= diasMes(mes); dia++, dS++) {   // "diasMes()" >> los dias de cada mes.
 
-                System.out.print((dia < 10) ? dia + "  " : dia + " ");
-
-                if (dS > 7) {  //salto de línea cada siete dias.
-                    dS = 1;
+                if (dS >= 7) {  //salto de línea cada siete dias.
+                    dS = 0;
                     System.out.println();
                 }
 
-                /*if (dia > 31) {
-                    dia = 0;
-                } */
+                System.out.print((dia < 10) ? dia + "  " : dia + " ");
             }
-            System.out.println();
 
+            System.out.println("\n");
+
+            for (int espacio = 0; espacio < dS; espacio++) {
+                System.out.print("   ");
+            }
         }
     }
 
