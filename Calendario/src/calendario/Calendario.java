@@ -16,10 +16,15 @@ public class Calendario {
         int dS;
         dS = 0;
         //Bluce sobre meses
-        
+
         for (int mes = 1; mes <= 12; mes++) {
+            System.out.println(meses(mes));
+            System.out.println("L  M  X  J  V  S  D");
+            for (int espacio = 0; espacio < dS; espacio++) {
+                System.out.print("   ");
+            }
+
             //Bucle sobre dias más dias de la semana (Lun, Mar, Mie, ... Dom)
-            
             for (dia = 1; dia <= diasMes(mes); dia++, dS++) {   // "diasMes()" >> los dias de cada mes.
 
                 if (dS >= 7) {  //salto de línea cada siete dias.
@@ -32,9 +37,6 @@ public class Calendario {
 
             System.out.println("\n");
 
-            for (int espacio = 0; espacio < dS; espacio++) {
-                System.out.print("   ");
-            }
         }
     }
 
