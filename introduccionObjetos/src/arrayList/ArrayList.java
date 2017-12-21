@@ -18,29 +18,13 @@ public class ArrayList {
 
     }
 
-    private static boolean calculoPrimos() {
+    private static void calculoPrimos() {
         int numero;
-        int divisor;
-        int resul;
-        boolean primo;
-
-        for (numero = 2; numero < 100; numero++) {
-            if (numero != 2) {
-                for (divisor = primo();;) {
-                    resul = numero / divisor;
-                }
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static int primo(int primo) {
-        int listaPrimos[] = new int [10];
         int posicion;
+        int residuo;
+        int primos[] = new int [100];   //almacenamietno de numeros primos
+        boolean primo;
         
-        posicion = 0;
-        listaPrimos[posicion] = primo;
+
     }
 }
