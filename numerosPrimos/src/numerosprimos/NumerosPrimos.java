@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package numerosprimos;
-
-/**
- *
- * @author pau
- */
+import java.util.ArrayList;
 public class NumerosPrimos {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         int num = 2;
         int numLectura = 0;

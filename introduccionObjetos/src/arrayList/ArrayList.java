@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package introduccionobjetos;
+package arrayList;
 
 /**
  *
  * @author pau
  */
-public class IntroduccionObjetos {
+public class ArrayList {
 
     /**
      * @param args the command line arguments
@@ -18,7 +18,7 @@ public class IntroduccionObjetos {
 
     }
 
-    private static boolean primos() {
+    private static boolean calculoPrimos() {
         int numero;
         int divisor;
         int resul;
@@ -34,5 +34,13 @@ public class IntroduccionObjetos {
             }
         }
         return false;
+    }
+
+    private static int primo(int primo) {
+        int listaPrimos[] = new int [10];
+        int posicion;
+        
+        posicion = 0;
+        listaPrimos[posicion] = primo;
     }
 }
