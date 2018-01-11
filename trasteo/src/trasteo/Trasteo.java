@@ -3,10 +3,18 @@ package trasteo;
 public class Trasteo {
 
     public static void main(String[] args) {
-        int a[][] = {{1}, {3,4,5}};
-        System.out.println(a[0].length);
+        int a[] = new int[12];
+            a[0] = 1;
+            
+            int i = 10+2*2;
+            int y = 10+(2*2);
+            
+            System.out.println(i + " "+ y);
+        }
     }
-}
+
+
+
 
 /*
  public static void main(String[] args) {
@@ -34,4 +42,4 @@ public class Trasteo {
         }
     }
 }
-*/
+ */

@@ -7,18 +7,60 @@ public class Calendario {
     System.out.println("L   M   X   J   V   S   D");
      */
     
-    
     public static void main(String[] args) {
         calendario();
+      
     }
+    
+    private static void calendario(){
+        int dia;
+        int dS;
+        dS = 0;
+        //Bluce sobre meses
+      
+        for (int mes = 1; mes <= 12; mes++) {
 
-    private static void arrayMeses(){
-        int dia[];
-        int diaSemana[];
+            System.out.println(meses(mes));
+           // System.out.println("L  M  X  J  V  S  D");
+
+            for (int espacio = 0; espacio < dS; espacio++) {
+                System.out.print("   ");
+            }
+
+            //Bucle sobre dias más dias de la semana (Lun, Mar, Mie, ... Dom)
+            // "diasMes()" >> los dias de cada mes.
+
+            for (dia = 1; dia <= diasMes(mes); dia++, dS++) {   
+                if (dS >= 7) {  //salto de línea cada siete dias.
+                    dS = 0;
+                    System.out.println();
+                }
+
+                System.out.print((dia < 10) ? dia + "  " : dia + " ");
+            }
+
+            System.out.println("\n");
+        }
+    }
+    
+    private static void imprirMes() {  //TEST
+      String meses[] = new String[11];
+      
+    }
+    
+    private static void calendarioHorizontal(){
+        
+        
+        for (int mes = 1; mes <= 12; mes++){
+            System.out.println(meses(mes));
+            for (int dia = 1; dia <= diasMes(mes); dia++){
+                System.out.print((dia < diasMes(mes)) ? + dia + "  ": "\n\n");
+            }
+        }
         
     }
     
-    private static void calendario() {
+    private static void calendarioVertical() {
         int dia;
         int dS;
         dS = 0;
@@ -142,8 +184,13 @@ public class Calendario {
                 break;
         }
 
-        return (mesString);
+        return (mesString + "\nL  M  X  J  V  S  D");
     }
     
-     
+    private static int calendario2(){
+        
+        
+        return 0;
+    }
+    
 }
