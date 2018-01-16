@@ -6,10 +6,8 @@ public class Calendario {
     cambioMes(mes);
     System.out.println("L   M   X   J   V   S   D");
      */
-    
     public static void main(String[] args) {
-        calendario();
-      
+        calendarioVertical();
     }
     
     private static void calendario(){
@@ -20,46 +18,12 @@ public class Calendario {
       
         for (int mes = 1; mes <= 12; mes++) {
 
-            System.out.println(meses(mes));
-           // System.out.println("L  M  X  J  V  S  D");
+    private static void arrayMeses() {
+        int dia[];
+        int diaSemana[];
 
-            for (int espacio = 0; espacio < dS; espacio++) {
-                System.out.print("   ");
-            }
-
-            //Bucle sobre dias más dias de la semana (Lun, Mar, Mie, ... Dom)
-            // "diasMes()" >> los dias de cada mes.
-
-            for (dia = 1; dia <= diasMes(mes); dia++, dS++) {   
-                if (dS >= 7) {  //salto de línea cada siete dias.
-                    dS = 0;
-                    System.out.println();
-                }
-
-                System.out.print((dia < 10) ? dia + "  " : dia + " ");
-            }
-
-            System.out.println("\n");
-        }
     }
-    
-    private static void imprirMes() {  //TEST
-      String meses[] = new String[11];
-      
-    }
-    
-    private static void calendarioHorizontal(){
-        
-        
-        for (int mes = 1; mes <= 12; mes++){
-            System.out.println(meses(mes));
-            for (int dia = 1; dia <= diasMes(mes); dia++){
-                System.out.print((dia < diasMes(mes)) ? + dia + "  ": "\n\n");
-            }
-        }
-        
-    }
-    
+
     private static void calendarioVertical() {
         int dia;
         int dS;
@@ -67,27 +31,21 @@ public class Calendario {
         //Bluce sobre meses
 
         for (int mes = 1; mes <= 12; mes++) {
-
             System.out.println(meses(mes));
             System.out.println("L  M  X  J  V  S  D");
-
             for (int espacio = 0; espacio < dS; espacio++) {
                 System.out.print("   ");
             }
 
             //Bucle sobre dias más dias de la semana (Lun, Mar, Mie, ... Dom)
             for (dia = 1; dia <= diasMes(mes); dia++, dS++) {   // "diasMes()" >> los dias de cada mes.
-
                 if (dS >= 7) {  //salto de línea cada siete dias.
                     dS = 0;
                     System.out.println();
                 }
-
                 System.out.print((dia < 10) ? dia + "  " : dia + " ");
             }
-
             System.out.println("\n");
-
         }
     }
 
@@ -186,11 +144,5 @@ public class Calendario {
 
         return (mesString + "\nL  M  X  J  V  S  D");
     }
-    
-    private static int calendario2(){
-        
-        
-        return 0;
-    }
-    
+
 }
