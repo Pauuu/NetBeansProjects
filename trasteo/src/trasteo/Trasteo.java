@@ -1,20 +1,25 @@
 package trasteo;
 
+import java.util.ArrayList;
+
 public class Trasteo {
 
     public static void main(String[] args) {
-        int a[] = new int[12];
-            a[0] = 1;
-            
-            int i = 10+2*2;
-            int y = 10+(2*2);
-            
-            System.out.println(i + " "+ y);
+        //ArrayList
+        int simpleArray[] = new int[5];
+
+        ArrayList<String> myList = new ArrayList<>(5);
+        myList.add("s");
+        myList.add("d");
+        myList.add("d");
+
+        System.out.println("size " + myList.size());
+        for (String i : myList) {
+            System.out.println(i);
         }
+
     }
-
-
-
+}
 
 /*
  public static void main(String[] args) {

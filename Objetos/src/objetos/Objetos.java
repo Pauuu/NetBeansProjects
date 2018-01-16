@@ -1,21 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package objetos;
 
-/**
- *
- * @author pau
- */
+import java.util.ArrayList;
+
 public class Objetos {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
-    
+
+    public class Libro {
+
+        //Atributos
+        private ArrayList<Pagina> paginas; //almacena objetos de tipo Pagina
+        private String anyPublicacion;
+        private String autor;
+
+        //Metodos
+        public void Llibro() {
+        }
+
+        public int getNumPagina() {
+            return 0;
+        }
+
+        public void addPagina() {
+            paginas.add(new Pagina(this, 5));
+        }
+    }
+
+    public class Pagina {
+
+        //atributos
+        private Libro libro;
+        private int numPag;
+
+        //Metodos
+        public Pagina(Libro l, int p) {
+            this.libro = l;
+            this.numPag = p;
+        }
+
+        public int getLibro() {
+            return this.numPag;
+        }
+    }
+
 }
