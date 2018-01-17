@@ -44,5 +44,17 @@ public class Objetos {
             return this.numPag;
         }
     }
+    
+    public class Biblioteca {
+    
+        //atributos
+        private ArrayList <Libro> libros;
+        private int totalLibros;
+        private sta
+        
+        
+    
+    
+    }
 
 }

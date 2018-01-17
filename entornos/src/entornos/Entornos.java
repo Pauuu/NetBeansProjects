@@ -5,40 +5,37 @@ import java.util.Scanner;
 public class Entornos {
 
     public static void main(String[] args) {
-        
-        Entrada h = new Entrada();
-        
         int max;
-        int a, b;
-        System.out.print("Introduzca un numero: ");
-        a = Entrada.entero();
+        int i;
+        int t[];
+        t = new int[6];
         
-        System.out.print("Introduzca otro número: ");
-        b = Entrada.entero();
+        for (i = 2; i < t.length - 2; i++){ // llenamos la tabla con valores 
+                                            //aleatorios entre 1 y 100 
+            t[i] = (int)(Math.random() * 100 + 1);
+        }
         
-        max = maximo(a, b);
-        System.out.println("El número mayor es: " + max);
+        System.out.println("Los valores son:");
+        for (i = 0; i < t.length; i++) {
+            System.out.print(t[i] + " ");
+        }
+        
+        max = maximo(t);
+        System.out.println("\nEl número mayor es: " + i);
     }
 
-    private static void uno() {
-        Scanner sc = new Scanner(System.in);
-        double gradosC, gradosF;
-        System.out.println("Introduce grados Centígrados:");
-        gradosC = sc.nextDouble();
-        gradosF = (32 + 9) * gradosC / 5;
-        System.out.println(gradosC + " oC = " + gradosF + " oF");
-    }
-
-    static int maximo(int a, int b) { // suponemos que los tres números serán distintos
+    static int maximo(int t[]) {
         int max;
-        if (a < b) {
-            max = a;
-        } else {
-            max = a;
+        max = t[0];
+        
+        for (int i = 0; i < t.length; i++) {
+            if (t[i] < max) { // si t[i] es mayor que max, 
+                              //entonces t[i] es el nuevo máximo 
+                max = t[i];
+            }
         }
         return (max);
     }
-
-    
-    
 }
+
+
