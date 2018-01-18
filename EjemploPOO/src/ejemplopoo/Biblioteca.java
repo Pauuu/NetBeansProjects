@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Biblioteca {
 
-    //atributos
+    //ATRIBUTOS
     private ArrayList<Libros> libro;
     private String nombre;
 
-    //metodos
+    //METODOS
     public Biblioteca(String n) {
         this.nombre = n;
     }
 
-    public void addLibro() {
-        this.libro.add(new Libros());
+    public void addLibro(int p, String a, String t) {
+        this.libro.add(new Libros(p, a, t));
     }
 
     private void removeLibro() {
@@ -24,4 +24,5 @@ public class Biblioteca {
     private void reportLibro() {
 
     }
+
 }

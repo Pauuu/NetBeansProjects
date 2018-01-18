@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Paginas {
 
-    //atributos
+    //ATRIBUTOS
     private int numPag;
     private Libros libro;
 
-    //metodos
+    //METODOS
     public Paginas(Libros l, int n) {
         this.libro = l;
         this.numPag = n;
