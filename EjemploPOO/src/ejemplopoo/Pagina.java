@@ -2,15 +2,19 @@ package ejemplopoo;
 
 import java.util.ArrayList;
 
-public class Paginas {
+public class Pagina {
 
     //ATRIBUTOS
     private int numPag;
-    private Libros libro;
+    private Libro libro;
 
     //METODOS
-    public Paginas(Libros l, int n) {
+    public Pagina(Libro l, int n) {
         this.libro = l;
         this.numPag = n;
+    }
+    
+    public Libro getLibro(){
+        return this.libro;
     }
 }
