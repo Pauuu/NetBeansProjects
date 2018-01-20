@@ -11,8 +11,7 @@ public class Biblioteca {
     public Biblioteca(String nombreBiblioteca) {    //[TRADUCCION DEL UML]: aqui solo ponemos el nombre sin los libros, pq los libros los añadimos despues; una biblioteca puede estar sin libros; los libros se pueden mover de una biblioteca a otra
         this.nombreBiblioteca = nombreBiblioteca;
         this.libros = new ArrayList();
-        
-    } 
+    }
 
     // Publicos ----------------------------------------------------------------
     //
@@ -37,10 +36,9 @@ public class Biblioteca {
 
         for (int i = 0; i < this.libros.size(); i++) {
             System.out.println("  Libro num <" + (i + 1)
-                    + ">  Título: " + (libros.get(i).getTitulo()) + "  "
-                    + "Autor: " + (libros.get(i).getAutor()) + "  "
-                    + "Año de publicación: " + (libros.get(i).getAny()));
-
+                    + ">  Título: " + (this.libros.get(i).getTitulo()) + "  "
+                    + "Autor: " + (this.libros.get(i).getAutor()) + "  "
+                    + "Año de publicación: " + (this.libros.get(i).getAny()));
         }
     }
 
