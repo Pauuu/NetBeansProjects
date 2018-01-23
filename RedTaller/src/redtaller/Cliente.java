@@ -26,16 +26,15 @@ public class Cliente {
     public void reportVehiculo() {
         for (int i = 0; i < this.vehiculo.size(); i++) {
             System.out.println(
-                    this.vehiculo.get(i).isEnTaller()
+                    this.vehiculo.get(i).getEnTaller()
                     + " " + this.vehiculo.get(i).getKilometraje()
                     + " " + this.vehiculo.get(i).getMarca()
                     + " " + this.vehiculo.get(i).getModelo()
                     + " " + this.vehiculo.get(i).getMatricula()
             );
         }
-
     }
-
+ 
     public ArrayList<Vehiculo> getVehiculo() {
         return vehiculo;
     }

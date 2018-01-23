@@ -5,39 +5,39 @@ import java.util.*;
 public class Vehiculo {
 
     //atributos
-    private boolean enTaller;
     private Cliente propietario;
+    private int matricula;
     private int kilometraje;
+    private Taller taller;
     private String marca;
     private String modelo;
-    private String matricula;
 
     //metodos
-    public Vehiculo(boolean b, int k, Cliente p, String mc,
-            String md, String mt) {
-        this.enTaller = b;
+    public Vehiculo(Taller b, int k, Cliente p, String mc,
+            String md, int mt) {
+        this.taller = b;
         this.kilometraje = k;
         this.propietario = p;
         this.marca = mc;
         this.modelo = md;
         this.matricula = mt;
     }
-    
-    public Vehiculo(){
-        this.enTaller = false;
+
+    public Vehiculo() {
+        this.taller = null;
         this.kilometraje = 0;
         this.propietario = null;
         this.marca = "Audi";
         this.modelo = "uno";
-        this.matricula = "A0000";
+        this.matricula = 0000;
     }
 
-    public boolean isEnTaller() {
-        return enTaller;
+    public Taller getEnTaller() {
+        return taller;
     }
 
-    public void setEnTaller(boolean enTaller) {
-        this.enTaller = enTaller;
+    public void setEnTaller(Taller enTaller) {
+        this.taller = enTaller;
     }
 
     public Cliente getPropietario() {
@@ -56,11 +56,11 @@ public class Vehiculo {
         this.marca = marca;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -75,7 +75,7 @@ public class Vehiculo {
     public String getModelo() {
         return modelo;
     }
-    
+
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
