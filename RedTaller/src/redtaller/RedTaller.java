@@ -13,13 +13,20 @@ public class RedTaller {
     public static void main(String[] args) {
         RedTaller red1 = new RedTaller();   //se tiene que crear la red para poder usar los metodos de esta clase(1)
         red1.addCliente(12345678, "manolo", "sanchez");
-        red1.addCliente(12345678, "manolo", "sanchez");
+        red1.addTaller("c/ El Titempo", "Taller Tahoy Tamañana", 0, 0);
+        Taller t1 = red1.addTaller("2", "Taller rellat", 2, 2);
+        
+        System.out.println(t1.getNombre());
     }
 
     public RedTaller() {
         this.listaClientes = new ArrayList();
         this.listaTalleres = new ArrayList();
         this.listaVehiculos = new ArrayList();
+    }
+
+    public void addTaller2(Taller t) {
+        this.listaTalleres.add(t);
     }
 
     private void addCliente(int d, String n, String a) {
@@ -30,12 +37,15 @@ public class RedTaller {
         //this.addCliente(new Cliente(n, a, d));
     }
 
-    private void addTaller(String n, String a, int c, int t) {
-        this.listaTalleres.add(new Taller(n, a, c, t));
-        System.out.println("Taller añadido");
+    private Taller addTaller(String d, String n, int c, int tel) {
+        Taller t = new Taller(d, n, c, tel);
+        this.listaTalleres.add(t);
+        System.out.println("Taller " + n + " añadido");
+        return t;
     }
 
     private void addVehiculos(Taller b, int k, Cliente p, String mc, String md, int mt) {
+        Vehiculo v = new Vehiculo();
         this.listaVehiculos.add(new Vehiculo(b, k, p, mc, md, mt));
         System.out.println("Vehiculo añadido");
     }

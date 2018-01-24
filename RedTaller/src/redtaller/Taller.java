@@ -21,6 +21,7 @@ public class Taller {
         this.tel = t;
         this.clientes = new ArrayList();
         this.vehiculos = new ArrayList();
+
     }
 
     public void addCliente(Cliente c) {
@@ -39,13 +40,12 @@ public class Taller {
         }
         this.addCliente(v.getPropietario());    //buscar antes si está en el taller o no
     }*/
-    
-    public void addVehiculo3(Vehiculo v){
-        if (v.getEnTaller() != null){
+    public void addVehiculo3(Vehiculo v) {
+        if (v.getEnTaller() != null) {
             v.setTaller(this);
             System.out.println("Vehiculo añadido");
         } else {
-            System.out.println("Este vehiculo ya está en un taller");
+            System.out.println("Este vehiculo ya está en el taller" + v.getEnTaller().getNombre());
         }
     }
 
