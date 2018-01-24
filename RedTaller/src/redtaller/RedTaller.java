@@ -5,44 +5,39 @@ import java.util.*;
 public class RedTaller {
 
     //ATRIBUTOS
-    ArrayList<Cliente> clientes;
-    ArrayList<Taller> talleres;
-    ArrayList<Vehiculo> vehiculo;
+    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Taller> listaTalleres;
+    private ArrayList<Vehiculo> listaVehiculos;
 
     //METODOS
     public static void main(String[] args) {
         RedTaller red1 = new RedTaller();   //se tiene que crear la red para poder usar los metodos de esta clase(1)
-        Taller t1 = new Taller("Direccion aleatoria","Taller 1",2,2);
-        Taller t2 = new Taller ("Direccion aleatoria","Taller 2",44,44);
-        Cliente fulano = new Cliente("A", "b", "c");
-
-        Vehiculo buga1 = new Vehiculo(t1, 232, fulano, "Audio", "hika", 3456);
-        Vehiculo buga2 = new Vehiculo(t1, 232, fulano, "VeusSiBaden", "roma", 1488);
-        Vehiculo buga3 = new Vehiculo();
-
-        //le damos coches a fulano
-        fulano.addVehiculo(buga1);
-        fulano.addVehiculo(buga2);
-        fulano.addVehiculo(buga3);
-        
-        t1.addVehiculo2(buga1);
-        t1.addVehiculo2(buga1);
-        t1.repararVehiculo(buga1);
-        t1.addVehiculo2(buga1);
-        //red1.reportVehiculo(buga); //(1)
-        fulano.reportVehiculo();
-
-
-        red1.infoVehiculo(buga1);
-
+        red1.addCliente(12345678, "manolo", "sanchez");
+        red1.addCliente(12345678, "manolo", "sanchez");
     }
 
     public RedTaller() {
-        this.talleres = new ArrayList();
+        this.listaClientes = new ArrayList();
+        this.listaTalleres = new ArrayList();
+        this.listaVehiculos = new ArrayList();
     }
 
-    private void addCliente(Cliente c) {
-        this.clientes.add(c);
+    private void addCliente(int d, String n, String a) {
+        this.listaClientes.add(new Cliente(d, n, a));
+        System.out.println("Cliente añadido");
+
+        //this.listaClientes.add(Cliente c = new Cliente("A", "b", "c"));
+        //this.addCliente(new Cliente(n, a, d));
+    }
+
+    private void addTaller(String n, String a, int c, int t) {
+        this.listaTalleres.add(new Taller(n, a, c, t));
+        System.out.println("Taller añadido");
+    }
+
+    private void addVehiculos(Taller b, int k, Cliente p, String mc, String md, int mt) {
+        this.listaVehiculos.add(new Vehiculo(b, k, p, mc, md, mt));
+        System.out.println("Vehiculo añadido");
     }
 
     private void infoCliente(Cliente c) {
@@ -61,27 +56,27 @@ public class RedTaller {
     }
 
     public ArrayList<Cliente> getClientes() {
-        return clientes;
+        return listaClientes;
     }
 
     public void setClientes(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+        this.listaClientes = clientes;
     }
 
     public ArrayList<Taller> getTalleres() {
-        return talleres;
+        return listaTalleres;
     }
 
     public void setTalleres(ArrayList<Taller> talleres) {
-        this.talleres = talleres;
+        this.listaTalleres = talleres;
     }
 
     public ArrayList<Vehiculo> getVehiculo() {
-        return vehiculo;
+        return listaVehiculos;
     }
 
     public void setVehiculo(ArrayList<Vehiculo> vehiculo) {
-        this.vehiculo = vehiculo;
+        this.listaVehiculos = vehiculo;
     }
 
 }

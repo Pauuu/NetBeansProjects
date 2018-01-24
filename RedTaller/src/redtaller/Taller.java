@@ -27,34 +27,25 @@ public class Taller {
         this.clientes.add(c);
     }
 
-    /*public void addVehiculo(Vehiculo v) {   //está marcado como en taller y lo mete en el arrayList de vehiculos
-        for (Vehiculo vv : vehiculos) { //anyadir busqueda iterativa en un futuro
-            if (vv.getMatricula() == v.getMatricula()) { //busca si la matricula es la misma
-                System.out.println("Este vehiculo ya está en taller");
-                break;
-            } else {
-                v.setEnTaller(this);
-                this.vehiculos.add(v);
-            }
-        }
-
-        for (Cliente c : clientes) {
-            if (c == v.getPropietario()) {  //anyadir busqueda iterativa en un futuro
-                break;
-            } else {
-                this.addCliente(v.getPropietario());
-            }
-        }
-    }*/
-
-    public void addVehiculo2(Vehiculo v) {
+    /*public void addVehiculo2(Vehiculo v) {  //añadir renstriccion: 1 vehi. -> 1 taller
         if (v.getEnTaller() == this) {
-            System.out.println("El vehiculo con matrícula " + v.getMatricula()
-                    + " ya está en el taller");
+            System.out.println("El vehiculo con matrícula " + v.getMatricula() + " ya está en el taller");
+        } else if (v.isEnTaller() == true) {
+            System.out.println("El vehiculo con matrícula " + v.getMatricula() + " ya está en otro taller");
         } else {
             this.vehiculos.add(v);
-            v.setEnTaller(this);
+            v.setTaller(this);
             System.out.println("Vehiculo añadido");
+        }
+        this.addCliente(v.getPropietario());    //buscar antes si está en el taller o no
+    }*/
+    
+    public void addVehiculo3(Vehiculo v){
+        if (v.getEnTaller() != null){
+            v.setTaller(this);
+            System.out.println("Vehiculo añadido");
+        } else {
+            System.out.println("Este vehiculo ya está en un taller");
         }
     }
 

@@ -13,8 +13,7 @@ public class Vehiculo {
     private String modelo;
 
     //metodos
-    public Vehiculo(Taller b, int k, Cliente p, String mc,
-            String md, int mt) {
+    public Vehiculo(Taller b, int k, Cliente p, String mc, String md, int mt) {
         this.taller = b;
         this.kilometraje = k;
         this.propietario = p;
@@ -32,6 +31,14 @@ public class Vehiculo {
         this.matricula = 0000;
     }
 
+    public Taller getTaller() {
+        return taller;
+    }
+
+    public void setTaller(Taller taller) {
+        this.taller = taller;
+    }
+    
     public Taller getEnTaller() {
         return taller;
     }

@@ -6,13 +6,13 @@ public class Cliente {
 
     //atributos
     private ArrayList<Vehiculo> vehiculo;
+    private int dni;
     private int matricula;
     private String nombre;
     private String apellido;
-    private String dni;
 
     //metodos
-    public Cliente(String n, String a, String d) {
+    public Cliente(int d, String n, String a) {
         this.nombre = n;
         this.apellido = a;
         this.dni = d;
@@ -26,7 +26,7 @@ public class Cliente {
     public void reportVehiculo() {
         for (int i = 0; i < this.vehiculo.size(); i++) {
             System.out.println(
-                    this.vehiculo.get(i).getEnTaller()
+                    this.vehiculo.get(i).getTaller()
                     + " " + this.vehiculo.get(i).getKilometraje()
                     + " " + this.vehiculo.get(i).getMarca()
                     + " " + this.vehiculo.get(i).getModelo()
@@ -34,7 +34,7 @@ public class Cliente {
             );
         }
     }
- 
+
     public ArrayList<Vehiculo> getVehiculo() {
         return vehiculo;
     }
@@ -59,11 +59,21 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+
 }

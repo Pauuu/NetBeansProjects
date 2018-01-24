@@ -4,38 +4,32 @@ import java.util.Scanner;
 
 public class Entornos {
 
+    static void mostrar(int a, int b) {
+        int mayor, menor;
+        // desconocemos el orden en el que vienen a y b.
+        // Lo que haremos es poner los valores correctos en mayor, menor.
+        if (a > b) {    // a es el mayor. Se podría utilizar la función maximo()
+            //implementada anteriormente.
+            menor= b;
+            mayor = a;
+        } else { // en este caso b será el mayor mayo    
+            mayor = b;
+            menor = a;
+        }
+        for (int i = menor + 1; i < mayor; i++) {
+            System.out.print(i + " ");
+            System.out.println();
+      }
+
+    }
+
     public static void main(String[] args) {
-        int max;
-        int i;
-        int t[];
-        t = new int[6];
-        
-        for (i = 2; i < t.length - 2; i++){ // llenamos la tabla con valores 
-                                            //aleatorios entre 1 y 100 
-            t[i] = (int)(Math.random() * 100 + 1);
-        }
-        
-        System.out.println("Los valores son:");
-        for (i = 0; i < t.length; i++) {
-            System.out.print(t[i] + " ");
-        }
-        
-        max = maximo(t);
-        System.out.println("\nEl número mayor es: " + i);
+        int a, b;
+        System.out.print("Introduzca primer numero: ");
+        a = Entrada.entero();
+        System.out.print("Introduzca segundo numero: ");
+        b = Entrada.entero();
+        mostrar(a, b);
     }
 
-    static int maximo(int t[]) {
-        int max;
-        max = t[0];
-        
-        for (int i = 0; i < t.length; i++) {
-            if (t[i] < max) { // si t[i] es mayor que max, 
-                              //entonces t[i] es el nuevo máximo 
-                max = t[i];
-            }
-        }
-        return (max);
-    }
 }
-
-
