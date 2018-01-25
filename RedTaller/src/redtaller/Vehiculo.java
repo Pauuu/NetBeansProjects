@@ -38,14 +38,6 @@ public class Vehiculo {
     public void setTaller(Taller taller) {
         this.taller = taller;
     }
-    
-    public Taller getEnTaller() {
-        return taller;
-    }
-
-    public void setEnTaller(Taller enTaller) {
-        this.taller = enTaller;
-    }
 
     public Cliente getPropietario() {
         return propietario;
