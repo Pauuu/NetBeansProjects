@@ -50,7 +50,7 @@ public class Objetos {
         //atributos
         private ArrayList <Libro> libros;
         private int totalLibros;
-        private sta
+       
         
         
     
