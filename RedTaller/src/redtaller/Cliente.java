@@ -8,11 +8,13 @@ public class Cliente {
     private ArrayList<Vehiculo> vehiculo;
     private int dni;
     private int matricula;
+    private RedTaller redTaller;
     private String nombre;
     private String apellido;
 
     //metodos
-    public Cliente(int d, String n, String a) {
+    public Cliente(RedTaller t,int d, String n, String a) {
+        this.redTaller = t;
         this.nombre = n;
         this.apellido = a;
         this.dni = d;
@@ -26,7 +28,7 @@ public class Cliente {
     public void reportVehiculo() {
         for (int i = 0; i < this.vehiculo.size(); i++) {
             System.out.println(
-                    this.vehiculo.get(i).getTaller()
+                    this.vehiculo.get(i).getTaller().getNombre()
                     + " " + this.vehiculo.get(i).getKilometraje()
                     + " " + this.vehiculo.get(i).getMarca()
                     + " " + this.vehiculo.get(i).getModelo()
@@ -35,6 +37,7 @@ public class Cliente {
         }
     }
 
+    
     public ArrayList<Vehiculo> getVehiculo() {
         return vehiculo;
     }
@@ -75,5 +78,12 @@ public class Cliente {
         this.matricula = matricula;
     }
 
+    public RedTaller getRedtaller() {
+        return redTaller;
+    }
+
+    public void setRedtaller(RedTaller redtaller) {
+        this.redTaller = redtaller;
+    }
 
 }

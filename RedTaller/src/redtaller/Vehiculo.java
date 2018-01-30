@@ -8,13 +8,15 @@ public class Vehiculo {
     private Cliente propietario;
     private int matricula;
     private int kilometraje;
+    private RedTaller redTaller;
     private Taller taller;
     private String marca;
     private String modelo;
 
     //metodos
-    public Vehiculo(Taller b, int k, Cliente p, String mc, String md, int mt) {
-        this.taller = b;
+    public Vehiculo(RedTaller t, int k, Cliente p, String mc, String md, int mt) {
+        this.redTaller = t;
+        this.taller = null;
         this.kilometraje = k;
         this.propietario = p;
         this.marca = mc;
@@ -77,6 +79,14 @@ public class Vehiculo {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public RedTaller getRedtaller() {
+        return redTaller;
+    }
+
+    public void setRedtaller(RedTaller redtaller) {
+        this.redTaller = redtaller;
     }
 
 }
