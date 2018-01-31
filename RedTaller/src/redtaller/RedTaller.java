@@ -19,6 +19,7 @@ public class RedTaller {
         red1.infoClienteDni2(123456878);
 
         c1.addVehiculo(v1);
+        red1.infoVehiculoMatricula2(2728);
 
         t1.addVehiculo4(v1);
         c1.reportVehiculo();
