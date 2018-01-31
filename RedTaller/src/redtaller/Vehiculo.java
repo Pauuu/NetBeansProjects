@@ -32,6 +32,10 @@ public class Vehiculo {
         this.modelo = "uno";
         this.matricula = 0000;
     }
+    
+    public void propietario(){
+        System.out.println(this.getPropietario().getNombre());
+    }
 
     public Taller getTaller() {
         return taller;

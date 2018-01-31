@@ -7,7 +7,6 @@ public class Cliente {
     //atributos
     private ArrayList<Vehiculo> vehiculo;
     private int dni;
-    private int matricula;
     private RedTaller redTaller;
     private String nombre;
     private String apellido;
@@ -21,24 +20,22 @@ public class Cliente {
         this.vehiculo = new ArrayList();
     }
 
-    public void addVehiculo(Vehiculo v) {
+    public void addVehiculo(Vehiculo v) {   //añadir restrincción, solo una misma matrícula por v
         this.vehiculo.add(v);
     }
 
-    public void reportVehiculo() {
+    public void reportVehiculos() {
         System.out.println("--------------------------");
         for (int i = 0; i < this.vehiculo.size(); i++) {
             System.out.println(
-                    "Nombre"
-                        + this.vehiculo.get(i).getTaller().getNombre() +"\n"
+                    "Matrícula"
+                    + " " + this.vehiculo.get(i).getMatricula()
                     + "Kilometraje: "
-                        + " " + this.vehiculo.get(i).getKilometraje() +"\n"
+                    + " " + this.vehiculo.get(i).getKilometraje() + "\n"
                     + "Marca"
-                        + " " + this.vehiculo.get(i).getMarca() +"\n"
-                    + "Modelo" 
-                        + " " + this.vehiculo.get(i).getModelo() +"\n"
-                    + "Matrícula"
-                        + " " + this.vehiculo.get(i).getMatricula()
+                    + " " + this.vehiculo.get(i).getMarca() + "\n"
+                    + "Modelo"
+                    + " " + this.vehiculo.get(i).getModelo() + "\n"
             );
         }
         System.out.println("--------------------------");
@@ -74,14 +71,6 @@ public class Cliente {
 
     public void setDni(int dni) {
         this.dni = dni;
-    }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
     }
 
     public RedTaller getRedtaller() {
