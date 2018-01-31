@@ -19,7 +19,7 @@ public class RedTaller {
         red1.infoClienteDni2(123456878);
 
         c1.addVehiculo(v1);
-        red1.infoVehiculoMatricula2(2728);
+        red1.infoMaricula2(2728);
 
         t1.addVehiculo4(v1);
         c1.reportVehiculo();
@@ -69,24 +69,7 @@ public class RedTaller {
         return null;
     }
 
-    private Cliente crearCliente(int dni, String nombre, String apellido) {
-        Cliente c = new Cliente(this, dni, nombre, apellido);
-
-        for (int i = 0; i < listaClientes.size(); i++) {
-            if (listaClientes.get(i).getDni() == dni) {
-                System.out.println("Este cliente ya se encuentra dentro del RedTaller \n\n");
-                return null;    //no se que devolver
-            }
-        }
-        //cambiar esta rutina(?)
-        this.listaClientes.add(c);
-        System.out.println("Cliente añadido \n\n");
-        return c;
-
-        //this.listaClientes.add(Cliente c = new Cliente("A", "b", "c"));
-        //this.addCliente(new Cliente(n, a, d));
-    }
-
+    
     private Cliente crearCliente2(int dni, String nombre, String apellido) { //cambiar esta rutina
         if (this.busquedaCliente(dni) == null) {    //así?????
             Cliente c = new Cliente(this, dni, nombre, apellido);
@@ -108,29 +91,6 @@ public class RedTaller {
         //this.listaTalleres.add(new Taller(d, n, c, tel));
     }
 
-    /*
-    private void infoCliente(Cliente c) {
-        System.out.println(c.getNombre() + c.getApellido()
-                + c.getDni());
-    }
-     */
-    private void infoClienteDni(int dni) {
-        for (Cliente c : listaClientes) { //por cada obj.Cliente c de "listaClientes" //poner bucles normal (?)
-            if (dni == c.getDni()) {                                //para pomer el "if"
-                System.out.println(
-                        "-------------------------------------" + "\n"
-                        + "Información del cliente con DNI: " + c.getDni() + "\n"
-                        + "Nombre: " + c.getNombre() + "\n"
-                        + "Apellido: " + c.getApellido() + "\n"
-                        + "-------------------------------------\n\n"
-                );
-                break;
-            }
-        }
-        System.out.println("El cliente con DNI: " + dni //furula simpre -> cambiar
-                + " no se encuentra registrado \n\n");
-    }
-
     private void infoClienteDni2(int dni) {
         Cliente c = busquedaCliente(dni);   //camibar
         if (c != null) {
@@ -146,18 +106,7 @@ public class RedTaller {
         }
     }
 
-    /*
-    private void infoTaller(Taller t) {
-        System.out.println(
-                "-------------------------------------"
-                + "Informacion del taller: " + t.getNombre() + "\n"
-                + "Dirección: " + t.getDireccion() + "\n"
-                + "Código: " + t.getCodigo() + "\n"
-                + "Teléfono: " + t.getTel()
-                + "-------------------------------------"
-        );
-    }
-     */
+ 
     private void infoTallerCodigo(int codigo) {
         for (Taller t : listaTalleres) { //por cada obj.Cliente c de "listaClientes" //poner bucles normal (?)
             if (codigo == t.getCodigo()) {                                //para pomer el "if"
@@ -190,30 +139,6 @@ public class RedTaller {
         }
     }
 
-    /*
-    private void infoVehiculo(Vehiculo v) {
-        System.out.println(v.getMarca() + v.getMatricula()
-                + v.getPropietario());
-    }
-     */
- /*private void infoVehiculoMatricula(int matr) {
-        for (Vehiculo v : listaVehiculos) { //por cada obj.Cliente c de "listaClientes"
-            if (matr == v.getMatricula()) {
-                if (v.getPropietario() == null) {
-                    System.out.println(v.getMatricula() + " " + v.getKilometraje()
-                            + " " + v.getMarca() + " sin propietario \n\n");
-                    break;
-                } else {
-                    System.out.println(v.getMatricula() + " " + v.getKilometraje()
-                            + " " + v.getMarca() + " " + v.getPropietario().getDni());
-                    break;
-                }
-            }
-
-            System.out.println("The list has: " + ((v.getPropietario() == null)
-                    ? " sin propietario" : v.getPropietario().getDni()));
-        }
-    }*/
     private void infoVehiculoMatricula(int matr) {
         for (Vehiculo v : listaVehiculos) { //por cada obj.Cliente c de "listaClientes"
             if (matr == v.getMatricula()) {
