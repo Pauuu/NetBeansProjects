@@ -5,7 +5,7 @@ import java.util.*;
 public class Cliente {
 
     //atributos
-    private ArrayList<Vehiculo> vehiculo;
+    private ArrayList<Vehiculo> listaVehiculos;
     private int dni;
     private RedTaller redTaller;
     private String nombre;
@@ -17,36 +17,44 @@ public class Cliente {
         this.nombre = n;
         this.apellido = a;
         this.dni = d;
-        this.vehiculo = new ArrayList();
+        this.listaVehiculos = new ArrayList();
     }
 
     public void addVehiculo(Vehiculo v) {   //añadir restrincción, solo una misma matrícula por v
-        this.vehiculo.add(v);
+        this.listaVehiculos.add(v);
+    }
+
+    public void info() {
+        System.out.println(this.getNombre()
+                + this.getApellido() + "\n"
+                + this.getDni() + "\n"
+                + this.listaVehiculos.size()
+        );
     }
 
     public void reportVehiculos() {
         System.out.println("--------------------------");
-        for (int i = 0; i < this.vehiculo.size(); i++) {
-            System.out.println(
-                    "Matrícula"
-                    + " " + this.vehiculo.get(i).getMatricula()
+        for (int i = 0; i < this.listaVehiculos.size(); i++) {
+            System.out.println("Matrícula"
+                    + " " + this.listaVehiculos.get(i).getMatricula()
                     + "Kilometraje: "
-                    + " " + this.vehiculo.get(i).getKilometraje() + "\n"
+                    + " " + this.listaVehiculos.get(i).getKilometraje() + "\n"
                     + "Marca"
-                    + " " + this.vehiculo.get(i).getMarca() + "\n"
+                    + " " + this.listaVehiculos.get(i).getMarca() + "\n"
                     + "Modelo"
-                    + " " + this.vehiculo.get(i).getModelo() + "\n"
+                    + " " + this.listaVehiculos.get(i).getModelo() + "\n"
             );
         }
         System.out.println("--------------------------");
     }
 
-    public ArrayList<Vehiculo> getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(ArrayList<Vehiculo> vehiculo) {
-        this.vehiculo = vehiculo;
+    @Override
+    public String toString() {
+        return ("\n Red taller: " + this.redTaller
+                + "\n DNI: " + this.dni
+                + "\n Nombre: " + this.nombre
+                + "\n Apellido: " + this.apellido
+                + "\n Nº Vehiculos:" + this.listaVehiculos.size() + "\n");
     }
 
     public String getNombre() {

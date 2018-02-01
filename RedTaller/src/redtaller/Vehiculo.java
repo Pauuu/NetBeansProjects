@@ -14,11 +14,10 @@ public class Vehiculo {
     private String modelo;
 
     //metodos
-    public Vehiculo(RedTaller t, int k, Cliente p, String mc, String md, int mt) {
+    public Vehiculo(RedTaller t, int mt, int k, String mc, String md) {
         this.redTaller = t;
         this.taller = null;
         this.kilometraje = k;
-        this.propietario = p;
         this.marca = mc;
         this.modelo = md;
         this.matricula = mt;
@@ -32,8 +31,31 @@ public class Vehiculo {
         this.modelo = "uno";
         this.matricula = 0000;
     }
+
+    public void info() {
+        System.out.println(
+                this.getTaller() + "\n"
+                + this.getMatricula() + "\n"
+                + this.getKilometraje() + "\n"
+                + this.getMarca() + "\n"
+                + this.getModelo() + "\n"
+        );
+    }
+
+    //GETTERS  / SETTERS
     
-    public void propietario(){
+    @Override
+    public String toString() {
+        return ("\n Red taller: " + this.redTaller
+                + "\n Taller: " + this.taller
+                + "\n Propietario" + this.propietario
+                + "\n Nombre: " + this.matricula
+                + "\n Marca: " + this.marca
+                + "\n Modelo: " + this.modelo
+                + "\n Kilometraje: "+ this.kilometraje);
+    }
+    
+    public void propietario() {
         System.out.println(this.getPropietario().getNombre());
     }
 
