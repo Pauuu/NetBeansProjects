@@ -21,11 +21,15 @@ public class RedTaller {
         red1.crearCliente(12344548, "xyz", "123");
 
         red1.crearVehiculo("audio", 0, "audio", "modelo", 1234);
+        
+        red1.addVehiculoToCliente(1234, 12345678);
+        
+        red1.infoCliente(123455678);
+        red1.infoVehiculo(1234);
 
         red1.reportTalleres();
         red1.reportClientes();
         red1.reportVehiculos();
-        
 
     }
 
@@ -36,7 +40,7 @@ public class RedTaller {
     }
 
     //BUSQUEDAS    
-    private Cliente busquedaCliente(int dni) {
+    private Cliente buscarCliente(int dni) {
         for (int i = 0; i < listaClientes.size(); i++) {
             if (dni == listaClientes.get(i).getDni()) {
                 return listaClientes.get(i);
@@ -45,7 +49,7 @@ public class RedTaller {
         return null;
     }
 
-    private Taller busquedaTaller(int codigo) {
+    private Taller buscarTaller(int codigo) {
         for (int i = 0; i < listaTalleres.size(); i++) {
             if (codigo == listaTalleres.get(i).getCodigo()) {
                 return listaTalleres.get(i);
@@ -54,7 +58,7 @@ public class RedTaller {
         return null;
     }
 
-    private Vehiculo busquedaVehiculo(int matricula) {
+    private Vehiculo buscarVehiculo(int matricula) {
         for (int i = 0; i < listaVehiculos.size(); i++) {
             if (matricula == listaVehiculos.get(i).getMatricula()) {
                 return listaVehiculos.get(i);
@@ -65,7 +69,7 @@ public class RedTaller {
 
     //CREACION OBJETOS EN LA RED
     private boolean crearCliente(int dni, String nombre, String apellido) {
-        if (this.busquedaCliente(dni) != null) {
+        if (this.buscarCliente(dni) != null) {
             return false; // No creado porque ya existe =======================>
         }
 
@@ -74,28 +78,66 @@ public class RedTaller {
         return true;
     }
 
-    private boolean crearTaller(String d, String n, int codigo, int tel) {
-        if (busquedaTaller(codigo) != null) {
+    private boolean crearTaller(String direccion, String nombre, int codigo, int tel) {
+        if (buscarTaller(codigo) != null) {
             return false;
         }
 
-        this.listaTalleres.add(new Taller(this, d, n, codigo, tel));
+        this.listaTalleres.add(new Taller(this, direccion, nombre, codigo, tel));
         return true;
     }
 
     private boolean crearVehiculo(String mc, int k, String marca, String modelo, int matricula) {
-        if (busquedaVehiculo(matricula) != null) {
+        if (buscarVehiculo(matricula) != null) {
             return false;
         }
+        
         this.listaVehiculos.add(new Vehiculo(this, matricula, k, marca, modelo));
         return true;
     }
 
+    //ADD
+    private void addVehiculoToCliente(int matricula, int dni) {
+        Vehiculo v = buscarVehiculo(matricula);
+        Cliente c = buscarCliente(dni);
+
+        if (v == null || c == null) {
+            System.out.println(v == null ? "El vehiculo no existe" : "El cliente no existe");
+        } else {
+            c.addVehiculo(v);
+        }
+    }
+
+    private void addVehiculoToTaller(int matricula, int codigo) {
+        Vehiculo v = buscarVehiculo(matricula);
+        Taller t = buscarTaller(codigo);
+
+        if (v == null || t == null) {
+            System.out.println(v == null ? "El vehiculo no existe" : "El taller no existe");
+        } else {
+            t.addVehiculo(v);
+            t.addCliente(v.getPropietario());
+        }
+    }
+
+    //REPARAR VEHICULO
+    private void repararvehiculo(int codigo, int matricula) {
+        Taller t = buscarTaller(codigo);
+        Vehiculo v = buscarVehiculo(matricula);
+
+        if (t == null || v == null) {
+            System.out.println(v == null ? "Este vehiculo no existe" : "Este taller no existe");
+        } else {
+            t.repararVehiculo(v);
+        }
+
+    }
+
     //CAMBIO DE PROPIETARIO
     private void cambioPropietario(int vViejo, int vNuevo, int cliente) {
-        Vehiculo v = busquedaVehiculo(vViejo);
-        Vehiculo n = busquedaVehiculo(vNuevo);
-        Cliente c = busquedaCliente(cliente);
+        Vehiculo v = buscarVehiculo(vViejo);
+        Vehiculo n = buscarVehiculo(vNuevo);
+        Cliente c = buscarCliente(cliente);
 
         if (v == null || n == null) {
             System.out.println("El vehiculo con matricula: " + vNuevo + "no existe");
@@ -129,35 +171,32 @@ public class RedTaller {
 
     //INFORMACION SOBRE OBJETOS
     private void infoCliente(int dni) {
-        Cliente c = busquedaCliente(dni);
+        Cliente c = buscarCliente(dni);
 
-        if (busquedaCliente(dni) == null) {
-            System.out.println("El cliente con dni: " + dni + " ,no existe");
+        if (buscarCliente(dni) == null) {
+            System.out.println("El cliente con dni: " + dni + ", no existe \n");
         } else {
-            System.out.println(
-                    c.getDni() + "\n"
-                    + c.getNombre()
-            );
+            System.out.println(listaClientes.get(listaClientes.indexOf(c)));
         }
     }
 
     private void infoTaller(int codigo) {
-        Taller t = busquedaTaller(codigo);
+        Taller t = buscarTaller(codigo);
 
-        if (busquedaCliente(codigo) == null) {
+        if (buscarCliente(codigo) == null) {
             System.out.println("El taller con código : " + codigo + " ,no existe");
         } else {
-
+            System.out.println(listaTalleres.get(listaTalleres.indexOf(t)));
         }
     }
 
     private void infoVehiculo(int matricula) {
-        Vehiculo v = busquedaVehiculo(matricula);
+        Vehiculo v = buscarVehiculo(matricula);
 
-        if (busquedaCliente(matricula) == null) {
+        if (buscarVehiculo(matricula) == null) {
             System.out.println("El vehiculo con : " + matricula + " ,no existe");
         } else {
-            v.info();
+            System.out.println(listaVehiculos.get(listaVehiculos.indexOf(v)));
         }
     }
 }

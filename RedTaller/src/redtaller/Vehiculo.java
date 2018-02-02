@@ -48,7 +48,7 @@ public class Vehiculo {
     public String toString() {
         return ("\n Red taller: " + this.redTaller
                 + "\n Taller: " + this.taller
-                + "\n Propietario" + this.propietario
+                + "\n Propietario: " + this.propietario
                 + "\n Nombre: " + this.matricula
                 + "\n Marca: " + this.marca
                 + "\n Modelo: " + this.modelo

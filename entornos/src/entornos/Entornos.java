@@ -16,7 +16,7 @@ public class Entornos {
             mayor = b;
             menor = a;
         }
-        for (int i = menor + 1; i < mayor; i++) {
+        for (int i = menor; i <= mayor; i++) {
             System.out.print(i + " ");
             System.out.println();
       }

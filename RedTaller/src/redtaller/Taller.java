@@ -29,7 +29,7 @@ public class Taller {
         this.listaClientes.add(c);
     }
 
-    public void addVehiculo4(Vehiculo v) {
+    public void addVehiculo(Vehiculo v) {
         if (v.getTaller() != null) {
             System.out.println(
                     "Este vehiculo ya está en el taller: \n"
@@ -37,7 +37,7 @@ public class Taller {
 
         } else {
             v.setTaller(this);
-            this.listaVehiculos.add(v);
+            this.listaVehiculos.add(v);            
             System.out.println("Vehiculo añadido \n\n");
         }
     }
@@ -54,6 +54,11 @@ public class Taller {
     public void repararVehiculo(Vehiculo v) {
         v.setTaller(null);
         this.listaVehiculos.remove(v);
+        
+        if(v.getPropietario().numVehiculos() > 0){
+            
+        }
+        
     }
 
     public void reportVehiculos() {
@@ -87,8 +92,8 @@ public class Taller {
                 + "\n Codigo taller: " + this.codigo
                 + "\n Nombre: " + this.nombre
                 + "\n Direccion: " + this.direccion
-                + "\n Nº Vehiculos:" + this.listaClientes.size()
-                + "\n Nº Clientes:" + this.listaVehiculos.size() + "\n");
+                + "\n Nº Vehiculos: " + this.listaClientes.size()
+                + "\n Nº Clientes: " + this.listaVehiculos.size() + "\n");
     }
 
     public String getDireccion() {

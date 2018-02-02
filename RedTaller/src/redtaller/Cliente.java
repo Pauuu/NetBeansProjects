@@ -22,6 +22,7 @@ public class Cliente {
 
     public void addVehiculo(Vehiculo v) {   //añadir restrincción, solo una misma matrícula por v
         this.listaVehiculos.add(v);
+        v.setPropietario(this);
     }
 
     public void info() {
@@ -57,6 +58,10 @@ public class Cliente {
                 + "\n Nº Vehiculos:" + this.listaVehiculos.size() + "\n");
     }
 
+    public int numVehiculos(){
+        return listaVehiculos.size();
+    }
+    
     public String getNombre() {
         return nombre;
     }
