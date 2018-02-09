@@ -32,16 +32,6 @@ public class Vehiculo {
         this.matricula = 0000;
     }
 
-    public void info() {
-        System.out.println(
-                this.getTaller() + "\n"
-                + this.getMatricula() + "\n"
-                + this.getKilometraje() + "\n"
-                + this.getMarca() + "\n"
-                + this.getModelo() + "\n"
-        );
-    }
-
     //GETTERS  / SETTERS
     
     @Override

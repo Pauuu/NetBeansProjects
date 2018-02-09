@@ -39,9 +39,9 @@ public class RedTaller {
         this.listaVehiculos = new ArrayList();
     }
 
-    //BUSQUEDAS    
+    //Busquedas    
     private Cliente buscarCliente(int dni) {
-        for (int i = 0; i < listaClientes.size(); i++) {
+        for (int i = 0; i < this.listaClientes.size(); i++) {
             if (dni == listaClientes.get(i).getDni()) {
                 return listaClientes.get(i);
             }
@@ -67,10 +67,10 @@ public class RedTaller {
         return null;
     }
 
-    //CREACION OBJETOS EN LA RED
+    //Creacion objetos de la red
     private boolean crearCliente(int dni, String nombre, String apellido) {
         if (this.buscarCliente(dni) != null) {
-            return false; // No creado porque ya existe =======================>
+            return false; //======= No creado porque ya existe ================>
         }
 
         this.listaClientes.add(new Cliente(this, dni, nombre, apellido));
@@ -80,7 +80,7 @@ public class RedTaller {
 
     private boolean crearTaller(String direccion, String nombre, int codigo, int tel) {
         if (buscarTaller(codigo) != null) {
-            return false;
+            return false; //======= No creado porque ya existe ================>
         }
 
         this.listaTalleres.add(new Taller(this, direccion, nombre, codigo, tel));
@@ -89,14 +89,14 @@ public class RedTaller {
 
     private boolean crearVehiculo(String mc, int k, String marca, String modelo, int matricula) {
         if (buscarVehiculo(matricula) != null) {
-            return false;
+            return false; //======= No creado porque ya existe ================>
         }
         
         this.listaVehiculos.add(new Vehiculo(this, matricula, k, marca, modelo));
         return true;
     }
 
-    //ADD
+    //Add
     private void addVehiculoToCliente(int matricula, int dni) {
         Vehiculo v = buscarVehiculo(matricula);
         Cliente c = buscarCliente(dni);
@@ -120,7 +120,7 @@ public class RedTaller {
         }
     }
 
-    //REPARAR VEHICULO
+    //Reparar vehiculo
     private void repararvehiculo(int codigo, int matricula) {
         Taller t = buscarTaller(codigo);
         Vehiculo v = buscarVehiculo(matricula);
@@ -133,7 +133,7 @@ public class RedTaller {
 
     }
 
-    //CAMBIO DE PROPIETARIO
+    //Cambio de propietario
     private void cambioPropietario(int vViejo, int vNuevo, int cliente) {
         Vehiculo v = buscarVehiculo(vViejo);
         Vehiculo n = buscarVehiculo(vNuevo);
@@ -150,7 +150,7 @@ public class RedTaller {
         vViejo.setPropietario(null);*/
     }
 
-    //REPORTs
+    //Reports
     private void reportClientes() {
         for (int c = 0; c < listaClientes.size(); c++) {
             System.out.println("Cliente " + c + ": " + listaClientes.get(c));
@@ -169,7 +169,7 @@ public class RedTaller {
         }
     }
 
-    //INFORMACION SOBRE OBJETOS
+    //Info sobre un objeto en especifio
     private void infoCliente(int dni) {
         Cliente c = buscarCliente(dni);
 

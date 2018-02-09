@@ -37,19 +37,20 @@ public class Taller {
 
         } else {
             v.setTaller(this);
-            this.listaVehiculos.add(v);            
+            this.listaVehiculos.add(v);
+            v.getPropietario().setVehiculosEnTaller(v.getPropietario().getVehiculosEnTaller()+1);
             System.out.println("Vehiculo añadido \n\n");
         }
     }
 
-    public void info() {
+    /*public void info() {
         System.out.println(this.getNombre()
                 + this.getRedTaller() + "\n"
                 + this.getCodigo() + "\n"
                 + this.listaClientes.size() + "\n"
                 + this.listaVehiculos.size()
         );
-    }
+    }*/
 
     public void repararVehiculo(Vehiculo v) {
         v.setTaller(null);
@@ -61,7 +62,7 @@ public class Taller {
         
     }
 
-    public void reportVehiculos() {
+    /*public void reportVehiculos() {
         System.out.println("+-----------------------------------+" + "\n"
                 + "Lista de vehiculos dentro del taller : \n"
                 + this.getNombre());
@@ -79,11 +80,8 @@ public class Taller {
         }
         System.out.println("+----------------------------------+ \n\n");
 
-    }
+    }*/
 
-    public Cliente reportClientes() {
-        return null;
-    }
 
     //GETTERS / SETTERS
     @Override
