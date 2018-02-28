@@ -1,22 +1,19 @@
 package tresenraya;
 
 public class Sesion {
-    
-    //MAIN
 
+    //MAIN
     public static void main(String[] args) {
-        Sesion s = new Sesion("f");
+        Sesion s = new Sesion("Sesion");
     }
 
     //ATRIBUTOS
-    
     private int horaInici;
     private Jugador[] jugador = new Jugador[2];
     private Partida partida;
     private Ranking ranking;
-    
-    //MÉTODOS
 
+    //MÉTODOS
     public Sesion(String nombre) {
 
         crearPartida();
@@ -27,6 +24,7 @@ public class Sesion {
 
     public void crearJugador(String nombre) {
         jugador[0] = new Jugador(nombre);
+        jugador[1] = new Jugador(nombre);
     }
 
     public void crearPartida() {
@@ -52,13 +50,11 @@ public class Sesion {
     }
 
     public int sorteoTurno() {
-
-        return (int) (Math.random() * 2);   //0 cara; 1 cruz
-
+        int turno = (int) (Math.random() * 2);   //0 cara; 1 cruz
+        return turno;
     }
 
     //GETTES / SETTERS
-    
     public int getHoraInici() {
         return horaInici;
     }

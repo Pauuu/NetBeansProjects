@@ -15,6 +15,10 @@ public class Partida {
     public void jugar() {
 
     }
+    
+    public int jugadorActual(){
+       return 0;
+    }
 
     //Privados
     private void crearTablero() {

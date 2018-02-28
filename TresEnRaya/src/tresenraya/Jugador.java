@@ -9,7 +9,7 @@ public class Jugador {
     }
 
     public void movimiento() {
-
+        
     }
 
     public String getNombre() {
