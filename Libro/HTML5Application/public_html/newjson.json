@@ -1,0 +1,118 @@
+{
+    "question": [
+        {
+            "type": "text",
+            "title": "Adivina el número secreto...",
+            "answer": "55"
+        },
+        {
+            "type": "text",
+            "title": "2+2=",
+            "answer": "4"
+        },
+        {
+            "type": "select",
+            "title": "HTML son las iniciales de...",
+            "option": [
+                "Hyper Text Transfer Protocol",
+                "File Transfer Protocol",
+                "Hypertext markup language"
+            ],
+            "answer": "0"
+        },
+        {
+            "type": "select",
+            "title": "La pizza con piña es...",
+            "option": [
+                "Para las personas que no tienen sentido del gusto",
+                "Un error",
+                "Una Diosa"
+            ],
+            "answer": "2"
+        },
+        {
+            "type": "multiple",
+            "title": "Marca los animales",
+            "option": [
+                "Gato",
+                "Verde",
+                "Perro",
+                "Tomate"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        },
+        {
+            "type": "multiple",
+            "title": "Marca las opciones que no sean colores",
+            "option": [
+                "Rojo",
+                "Elefante",
+                "Naranja",
+                "Naranja"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        },
+        {
+            "type": "checkbox",
+            "title": "¿Que ingredientes son válidos para una pizza?",
+            "option": [
+                "Bacon",
+                "Piña",
+                "Jamon",
+                "Olivas"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        },
+        {
+            "type": "checkbox",
+            "title": "¿Que colores, combinados entre si, forman el verda?",
+            "option": [
+                "Amarillo",
+                "Rojo",
+                "Azul",
+                "Blanco"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        },
+        {
+            "type": "radio",
+            "title": "Si van dos y cae uno, ¿quien es el que cae?",
+            "option": [
+                "uno",
+                "verde",
+                "fresa",
+                "violeta"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        },
+        {
+            "type": "radio",
+            "title": "Si la luna es un pez y el sol es un pez, ¿es la tierra un pez?",
+            "option": [
+                "Si",
+                "No",
+                "Es un tiburón",
+                "La luna y el sol no son peces"
+            ],
+            "answer": [
+                "0",
+                "2"
+            ]
+        }
+    ]
+}

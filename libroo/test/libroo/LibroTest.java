@@ -258,7 +258,7 @@ public class LibroTest {
         System.out.println("prestar_Libro");
         Libro instance = new Libro();
         boolean expResult = false;
-        boolean result = instance.prestar_Libro();
+        boolean result = !instance.prestar_LibroI();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -344,8 +344,8 @@ public class LibroTest {
     @Ignore
     public void testCrear_Libro() {
         System.out.println("crear_Libro");
-        Libro expResult = null;
-        Libro result = Libro.crear_Libro();
+        Object expResult = null;
+        Object result = Libro.crear_Libro();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         // fail("The test case is a prototype.");

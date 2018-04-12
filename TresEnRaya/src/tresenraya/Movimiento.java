@@ -2,21 +2,23 @@ package tresenraya;
 
 public class Movimiento {
 
-    private int fil;
+    private int row;
     private int col;
     private boolean blancas;
     private Jugador jugador;
 
-    public Movimiento() {
-        
+    public Movimiento(Jugador jugador, int fil, int col) {
+        this.jugador = jugador;
+        this.row = fil;
+        this.col = col;
     }
 
     public int getFil() {
-        return fil;
+        return row;
     }
 
     public void setFil(int fil) {
-        this.fil = fil;
+        this.row = fil;
     }
 
     public int getCol() {

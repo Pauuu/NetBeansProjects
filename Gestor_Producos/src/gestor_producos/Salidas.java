@@ -16,7 +16,8 @@ public class Salidas extends JFrame {
         try {
             Connection c;
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/1", "root", "1234");
-            Statement s = c.createStatement();
+            Statement stmt = c.createStatement();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Salidas.class.getName()).log(Level.SEVERE, null, ex);
         }

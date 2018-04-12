@@ -1,30 +1,36 @@
-package tresenraya ;
-
+package tresenraya;
 
 public class Ranking {
-    
-    private int partidasJugadas;    
-    private int empates;    
-    private int ganadasHumano; 
- 
-    public Ranking(){
+
+    private int partidasJugadas;
+    private int empates;
+    private int ganadasHumano;
+
+    public Ranking() {
         super();
     }
     
-    public void empatar() {
-        // TODO implement me    
+     public void ganar() {
+        this.partidasJugadas++;
+        this.ganadasHumano++;  
     }
-    
-    public void ganar() {
-        // TODO implement me    
-    }
-    
-    public void mostrar() {
-        // TODO implement me    
-    }
-    
-    //GETTERS / SETTERS
 
+    public void empatar() {
+        this.partidasJugadas++;
+        this.empates++;    
+    }   
+
+    public void mostrar() {
+        System.out.println("Partidas jugadas:" + partidasJugadas);
+        System.out.println("empates: " + empates);
+        System.out.println("Partidas ganadas: " + ganadasHumano);
+    }
+    
+    private void ganador(){
+    
+    }
+
+    //GETTERS / SETTERS
     public int getPartidasJugadas() {
         return partidasJugadas;
     }
@@ -48,5 +54,5 @@ public class Ranking {
     public void setGanadasHumano(int ganadasHumano) {
         this.ganadasHumano = ganadasHumano;
     }
-    
+
 }

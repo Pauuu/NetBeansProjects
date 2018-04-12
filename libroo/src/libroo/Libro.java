@@ -7,9 +7,10 @@ import java.util.Scanner;
  *
  * @author Rafael
  */
-public class Libro {
+public class Libro implements NuevaInterfaz {
 
-    private String titulo;
+    
+    private String tituloLibro;
     private String autor;
     private int isbn;
     private int num_ejem_pres;
@@ -23,7 +24,7 @@ public class Libro {
 
     public Libro(String titulo, String autor, int isbn, int num_ejem_pres, int num_ejem_tot) {  /* "num_ejem_pres" libros q se pueden prestar; 
                                                                                                  "num_ejem_tot" numero total de libros que se darán*/
-        this.titulo = titulo;
+        this.tituloLibro = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.num_ejem_pres = num_ejem_pres;
@@ -34,7 +35,7 @@ public class Libro {
     }
 
     public Libro(Libro a) {
-        this.titulo = a.titulo;
+        this.tituloLibro = a.tituloLibro;
         this.autor = a.autor;
         this.isbn = a.isbn;
         /* quizás en el constructor copia no tiene sentido copiar un libro y que ya
@@ -49,11 +50,11 @@ public class Libro {
     }
 
     public String getTitulo() {
-        return this.titulo;
+        return this.tituloLibro;
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        this.tituloLibro = titulo;
     }
 
     public String getAutor() {
@@ -171,6 +172,7 @@ public class Libro {
         }
     }
 
+    @Override
     public void mostrar_Libro() {
         System.out.println("======================");
         System.out.println("FICHA DEL LIBRO       ");

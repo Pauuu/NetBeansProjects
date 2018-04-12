@@ -1,35 +1,65 @@
 package tresenraya;
 
+import java.util.Scanner;
+
 public class Sesion {
 
-    //MAIN
-    public static void main(String[] args) {
-        Sesion s = new Sesion("Sesion");
-    }
-
     //ATRIBUTOS
-    private int horaInici;
     private Jugador[] jugador = new Jugador[2];
     private Partida partida;
     private Ranking ranking;
 
-    //MÉTODOS
-    public Sesion(String nombre) {
-
-        crearPartida();
-        crearRanking();
-        crearJugador(nombre);
-
-    }
-
-    public void crearJugador(String nombre) {
-        jugador[0] = new Jugador(nombre);
-        jugador[1] = new Jugador(nombre);
+    public Sesion() {
+        //Crea la partida
+        Partida p = new Partida();
+        this.partida = p;
     }
 
     public void crearPartida() {
-        Partida p = new Partida();
-        this.setPartida(p);
+
+        Scanner scan = new Scanner(System.in);
+        int IA = -1;
+        
+        this.mostrarDificultad();
+        
+        dificultad:
+        while (true) {
+
+            IA = scan.nextInt();
+            
+            switch (IA) {
+                case 0:
+                    this.crearIA0();
+                    break dificultad;
+
+                case 1:
+                    this.crearIA1();
+                    break dificultad;
+
+                case 2:
+                    this.crearIA2();
+                    break dificultad;
+
+                case 3:
+                    this.crearIA3();
+                    break dificultad;
+
+                case 4:
+                    this.crearIA4();
+                    break dificultad;
+
+                default:
+                    System.out.println("Elije una opcion valida");
+                    break;
+            }
+        }
+
+        crearRanking();
+        //crearIA4();
+        crearHumano();  //siempre es el 0 (de momento)
+        sorteoTurno();
+
+        partida.jugar(ranking);
     }
 
     public void crearRanking() {
@@ -38,43 +68,93 @@ public class Sesion {
     }
 
     public void crearHumano() {
-        // TODO implement me    
+        Jugador j0 = new Jugador(partida);
+        this.jugador[0] = j0;
     }
 
-    public void mostrarRanking() {
-        // TODO implement me    
+    public void crearIA0() { //cambiar
+        IA0 j1 = new IA0(partida);
+        this.jugador[1] = j1;
+    }
+
+    public void crearIA1() { //cambiar
+        IA0 j1 = new IA1(partida);
+        this.jugador[1] = j1;
+    }
+
+    public void crearIA2() { //cambiar
+        IA0 j1 = new IA2(partida);
+        this.jugador[1] = j1;
+    }
+
+    public void crearIA3() {
+        IA3 j1 = new IA3(partida);
+        this.jugador[1] = j1;
+    }
+
+    public void crearIA4() {
+        IA4 j1 = new IA4(partida);
+        this.jugador[1] = j1;
     }
 
     public void menu() {
-        // TODO implement me    
+
+        Scanner scan = new Scanner(System.in);
+        int opcion;
+
+        menu:
+        while (true) {
+            
+            this.mostrarMenu();
+            opcion = scan.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    this.crearPartida();
+                    break;
+
+                case 2:
+                    this.mostrarRanking();  //gestionar excepción
+                    break;
+                    
+                case 3:
+                    break menu;
+
+                default:
+                    System.out.println("Elije una opción valida \n");  //CAMBIAR
+                    break;
+            }
+        }
     }
 
-    public int sorteoTurno() {
-        int turno = (int) (Math.random() * 2);   //0 cara; 1 cruz
-        return turno;
+    public void mostrarRanking() {
+        ranking.mostrar(); //CREAR METODO
+    }
+
+    public void sorteoTurno() { //pasa jugadores. Primero blancas, luego negras
+        int moneda = (int) (Math.random() * 2);   //0 cara; 1 cruz
+
+        if (moneda == 0) {
+            partida.setJugadores(jugador[0], jugador[1]);//jugador0->blancas
+        } else {
+            partida.setJugadores(jugador[1], jugador[0]);//jugador1->blancas
+        }
+    }
+
+    private void mostrarMenu() {
+        System.out.println("Elije una de las opciones:");
+        System.out.println(
+                "1: Jugar \n"
+                + "2: Ranking \n"
+                + "3: Salir");
+    }
+
+    private void mostrarDificultad() {
+        System.out.println("Elije nivel IA");
+        System.out.println("Opciones: 0, 1 ,2, 3, 4");
     }
 
     //GETTES / SETTERS
-    public int getHoraInici() {
-        return horaInici;
-    }
-
-    public void setHoraInici(int horaInici) {
-        this.horaInici = horaInici;
-    }
-
-    public Jugador[] getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(Jugador[] jugador) {
-        this.jugador = jugador;
-    }
-
-    public Partida getPartida() {
-        return partida;
-    }
-
     public void setPartida(Partida partida) {
         this.partida = partida;
     }

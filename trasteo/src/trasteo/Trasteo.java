@@ -5,21 +5,15 @@ import java.util.ArrayList;
 public class Trasteo {
 
     public static void main(String[] args) {
-        //ArrayList
-        int simpleArray[] = new int[5];
 
-        ArrayList<String> myList = new ArrayList<>(5);
-        myList.add("s");
-        myList.add("d");
-        myList.add("d");
-
-        System.out.println("size " + myList.size());
-        for (String i : myList) {
-            System.out.println(i);
+        for (int i = 0; i < 20; i++) {
+            int num;
+            num = (int) (Math.random() * 12);
+            System.out.println(num);
         }
-
     }
 }
+
 
 /*
  public static void main(String[] args) {
