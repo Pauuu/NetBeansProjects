@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="UML1">
+  <ClassDiagramComponents>
+    <Class name="Alumno" package="" visibility="public" xPosition="73.0" yPosition="52.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="Apellido" type="String" visibility="private"/>
+        <Field name="FechaNacimiento" type="date" visibility="private"/>
+        <Field name="NIF" type="int" visibility="private"/>
+        <Field name="Poblacion" type="String" visibility="private"/>
+        <Field name="Direccion" type="String" visibility="private"/>
+        <Field name="CodigoPostal" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Nombre"/>
+          <Argument type="String" name="Apellido"/>
+          <Argument type="int" name="FechaNacimiento"/>
+          <Argument type="int" name="NIF"/>
+          <Argument type="String" name="Poblacion"/>
+          <Argument type="String" name="Direccion"/>
+          <Argument type="int" name="CodigoPostal"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="calularEdad" returnType="int" visibility="public"/>
+        <Method name="mostrarFichaAlumno" returnType="date" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

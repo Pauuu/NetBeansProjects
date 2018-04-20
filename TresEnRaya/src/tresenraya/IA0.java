@@ -1,4 +1,8 @@
 package tresenraya;
+/**
+ * 
+ * @author pau
+ */
 
 public class IA0 extends Jugador {
 

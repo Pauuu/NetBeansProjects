@@ -1,5 +1,9 @@
 package tresenraya;
 
+/**
+ *
+ * @author pau
+ */
 public class Ranking {
 
     private int partidasJugadas;
@@ -9,25 +13,25 @@ public class Ranking {
     public Ranking() {
         super();
     }
-    
-     public void ganar() {
+
+    public void ganar() {
         this.partidasJugadas++;
-        this.ganadasHumano++;  
+        this.ganadasHumano++;
     }
 
     public void empatar() {
         this.partidasJugadas++;
-        this.empates++;    
-    }   
+        this.empates++;
+    }
 
     public void mostrar() {
         System.out.println("Partidas jugadas:" + partidasJugadas);
         System.out.println("empates: " + empates);
         System.out.println("Partidas ganadas: " + ganadasHumano);
     }
-    
-    private void ganador(){
-    
+
+    private void ganador() {
+
     }
 
     //GETTERS / SETTERS

@@ -1,4 +1,8 @@
 package tresenraya;
+/**
+ * 
+ * @author pau
+ */
 
 import java.util.Scanner;
 
@@ -15,6 +19,15 @@ public class Sesion {
         this.partida = p;
     }
 
+    /**
+     * Crea una partida con la IA deseada.
+     * 
+     * @see IA0  IA0
+     * @see IA1  IA1
+     * @see IA2  IA2
+     * @see IA3  IA3
+     * @see IA4  IA4
+     */
     public void crearPartida() {
 
         Scanner scan = new Scanner(System.in);

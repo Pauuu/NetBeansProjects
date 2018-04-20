@@ -1,4 +1,8 @@
 package tresenraya;
+/**
+ * 
+ * @author pau
+ */
 
 import java.util.Scanner;
 

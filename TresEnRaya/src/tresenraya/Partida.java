@@ -1,5 +1,9 @@
 package tresenraya;
 
+/**
+ * @version 4.0
+ * @author pau
+ */
 public class Partida {
 
     //ATRIBUTOS
@@ -15,6 +19,35 @@ public class Partida {
         this.tablero = t;
     }
 
+    public void partidaEmpatada(Ranking rank) {
+        this.tablero.mostrar();
+        rank.empatar();
+
+        System.out.println("Empate. \n");
+    }
+
+    public void paridaGanada(Ranking rank) {
+        this.tablero.mostrar();
+        rank.ganar();
+
+        System.out.println("Partida ganada por: "
+                + this.jugadorActual.getNombre() + "\n");
+    }
+    
+    /**
+     * Ejecuta todas las instrucciones para que se pueda jugar. <br>
+     * Luego setea a la IA el tablero. <br>
+     * Mientras no haya victoria o empate ejecuta en bucle las siguientes 
+     * instrucciones: <br>
+     * 1. Indica el jugador actual, muestra el tablero y avisa al jugador 
+     * actual que ha de realizar un movimiento. <br>
+     * 2. Valida si la casilla elegida es válida o no. <br>
+     * 3. Comprueba si hay victoria o empate; en caso de no haber, 
+     * sigue con el bucle. <br>
+     * 4. Cambia el valor del turno actual para cambiar de jugador.
+     * 
+     * @param rank Ranking de la partida
+     */
     public void jugar(Ranking rank) {
 
         /*Crea el tablero*/
@@ -40,7 +73,7 @@ public class Partida {
             jugadorActual = this.jugador[turno];
 
             this.tablero.mostrar();
-            
+
             mov = this.jugadorActual.mover();
 
             if (turno == 0) {
@@ -51,7 +84,7 @@ public class Partida {
 
             //valida casilla
             if (!this.tablero.validarMovimiento(mov)) {
-                rank.setPartidasJugadas(+1); 
+                rank.setPartidasJugadas(+1);
                 break;  //---------------sale si movimiento no válido---------->
             }
 
@@ -67,21 +100,14 @@ public class Partida {
             //comprueba si ganador
             victoria = this.tablero.comprobarGanador();
             if (victoria) {
-                this.tablero.mostrar();
-                rank.ganar();   
-
-                System.out.println("Partida ganada por: "
-                        + this.jugadorActual.getNombre() + "\n");
+                this.paridaGanada(rank);
                 break;  //----------------------sale si hay victoria----------->
             }
 
             //comprueba si empate
             empate = this.tablero.tableroLleno();
             if (empate) {
-                this.tablero.mostrar();
-                rank.empatar();
-
-                System.out.println("Empate. \n");
+                this.partidaEmpatada(rank);
                 break;  //----------------------sale si hay empate------------->
             }
             turno = (i++) % 2; //deberia funcionar bien
@@ -90,6 +116,13 @@ public class Partida {
     }
 
 //GETTERS / SETTERS
+    /**
+     * Setea los jugadores. El primer jugador introducido obtiene las fichas
+     * blancas, el segund obtiene las fichas negras.
+     *
+     * @param jBlancas Jugador que tendrá las fichas blancas
+     * @param jNegras Jugador que tendrá las fichas negras
+     */
     public void setJugadores(Jugador jBlancas, Jugador jNegras) {
         this.jugador[0] = jBlancas;
         this.jugador[1] = jNegras;
@@ -102,8 +135,8 @@ public class Partida {
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
-    
-    public int getTurno(){
+
+    public int getTurno() {
         return this.turno;
     }
 }

@@ -1,11 +1,20 @@
 package tresenraya;
 
+/**
+ * @since 1.0
+ * @author pau
+ */
+
 public class IA1 extends IA0 {
 
     private Tablero tablero;
 
     private int[][] tableroPesos;
 
+    /**
+     * 
+     * @param p Partida
+     */
     public IA1(Partida p) {
         super(p);
         tablero = p.getTablero();
@@ -13,8 +22,13 @@ public class IA1 extends IA0 {
 
     /**
      * Realiza un movimiento automáticamente en la primera casilla libre
-     * con mayor peso.
-     * @return 
+     * con mayor peso. <br> 
+     * 
+     * Contiene el <i>tag</i> {@literal @Override} para sobreescribir el 
+     * método mover() de Jugador.
+     * 
+     * @return Devuelve un movimiento con parámetros: this.jugaodor, posicion X
+     * y posición y de la ficha a colocar.
      */
     @Override
     public Movimiento mover() {
@@ -48,9 +62,11 @@ public class IA1 extends IA0 {
     /**
      * Contiene un arreglo de valores. Al introducir unas coordenadas (filas 
      * y columnas) devolverá el valor de dicha casilla.
+     * 
      * @param fila Marca la fila deseada.
      * @param columna Marca la columnda deseada.
-     * @return 
+     * 
+     * @return Devuelve el tablero con los pesos.
      */
     private int calculoPesos(int fila, int columna) {   //hacerlos publicos
 

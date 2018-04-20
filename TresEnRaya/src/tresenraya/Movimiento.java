@@ -1,6 +1,14 @@
 package tresenraya;
+/**
+ * 
+ * @author pau
+ */
 
 public class Movimiento {
+    /**
+     * Es una clase que solo contiene atributos. Da información sobre las
+     * coordenadas del movimiento realizado y el tipo de ficha.
+     */
 
     private int row;
     private int col;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="1b">
+  <ClassDiagramComponents>
+    <Class name="Empleado" package="" visibility="public" xPosition="16.0" yPosition="44.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellidos" type="String" visibility="private"/>
+        <Field name="fechaNacimiento" type="int" visibility="private"/>
+        <Field name="nombreEmpresa" type="String" visibility="private"/>
+        <Field name="puestoTrabajo" type="String" visibility="private"/>
+        <Field name="fechaIncorporacion" type="date" visibility="private"/>
+        <Field name="sueldo" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Empresa" package="" visibility="public" xPosition="507.0" yPosition="7.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="anyCreacion" type="int" visibility="private"/>
+        <Field name="horasProduccion" type="int" visibility="private"/>
+        <Field name="costeProduccion" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calculoCosteProduccion" returnType="void" visibility="public"/>
+        <Method name="calculoCosteAnyo" returnType="void" visibility="public"/>
+        <Method name="calculoCosteDespido" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Tiene" source="Empresa" target="Empleado" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

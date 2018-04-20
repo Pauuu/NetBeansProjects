@@ -65,36 +65,40 @@ public class Matriz {
 
     public void cerebro() {
 
-        this.reduccionArray(matriz);
+        this.mostrarArray(matriz);
+
+        while (true) {
+
+            matriz = this.getMatrizReducida(matriz);
+            this.mostrarArray(matriz);
+
+            if (this.getColumnas() % 2 != 0 || this.getFilas() % 2 != 0) {
+                break;
+            }
+        }
     }
 
-    public void calculoValores(int m[][], int mNueva[][]) {
-        int val;
+    public int[][] ponerValores(int mtrz[][]) {
+        int m, n, valor;
 
-        for (int fil = 0; fil < mNueva.length; fil++) {
-            for (int col = 0; col < mNueva[fil].length; col++) {
+        m = mtrz.length;
+        n = mtrz[0].length;
 
-                val = 1;
+        for (int fil = 0; fil < m; fil++) {
+            for (int col = 0; col < n; col++) {
+                valor = 1;
 
                 for (int i = fil * 2; i < (fil + 1) * 2; i++) {
                     for (int j = col * 2; j < (col + 1) * 2; j++) {
 
-                        val = val * m[i][j];
+                        valor = valor * matriz[i][j];
                     }
                 }
-
-                mNueva[fil][col] = val;
+                mtrz[fil][col] = valor;
             }
         }
-    }
 
-    public void copiarArray(int nueva[][], int original[][]) {
-        for (int fil = 0; fil < original.length; fil++) {
-            for (int col = 0; col < original[fil].length; col++) {
-
-                nueva[fil][col] = original[fil][col];
-            }
-        }
+        return mtrz;
     }
 
     public void mostrarArray(int m[][]) {
@@ -110,39 +114,6 @@ public class Matriz {
         System.out.println();
     }
 
-    public void reduccionArray(int m[][]) {
-
-        boolean par;
-        int col, fil, colNueva, filNueva;
-        int mNueva[][];
-
-        par = true;
-        this.mostrarArray(m);
-
-        while (par) {
-
-            fil = m.length;
-            col = m[0].length;
-
-            colNueva = col / 2;
-            filNueva = fil / 2;
-
-            mNueva = new int[filNueva][colNueva];
-
-            this.calculoValores(m, mNueva);
-
-            m = new int[filNueva][colNueva];
-
-            this.copiarArray(m, mNueva);
-            this.mostrarArray(m);
-
-            if (colNueva % 2 != 0 || filNueva % 2 != 0) {
-                par = false;
-                System.out.println("Aqui acaba el programa!");
-            }
-        }
-    }
-
     public void rellenarArray(int m[][]) {
         int num;
 
@@ -155,16 +126,27 @@ public class Matriz {
         }
     }
 
-    public int[][] getMatrizReducida() {     //devuelve la matriz reducida. Utiliza atributos de la calse. y rellena
-        int m, n, mtrz[][];
+    public int[][] getMatrizReducida(int mtrz[][]) {     //devuelve la matriz reducida. Utiliza atributos de la calse. y rellena
+        int m, n;
 
-        m = filas / 2;
-        n = columnas / 2;
+        m = mtrz.length / 2;
+        n = mtrz[0].length / 2;
+
+        setFilas(n);
+        setColumnas(m);
 
         mtrz = new int[m][n];
-        rellenarArray(mtrz);
+        mtrz = ponerValores(mtrz);
 
         return mtrz;
+    }
+
+    public int getColumnas() {
+        return this.columnas;
+    }
+
+    public int getFilas() {
+        return this.filas;
     }
 
     public void setColumnas(int columnas) {

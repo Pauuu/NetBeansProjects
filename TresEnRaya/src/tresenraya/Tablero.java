@@ -2,7 +2,7 @@ package tresenraya;
 
 /**
  *
- * @version 1.2.3.4.5.6.7.8.9.0
+ * @version 4.0
  * @author pau
  */
 public class Tablero {
@@ -57,11 +57,11 @@ public class Tablero {
     }
 
     /**
-     * @deprecated Usar el método "mostrar".
+     * @deprecated Usar el método "mostrar". Mustra el tablero, pero los números
+     * no quedan alineados con el tablero. No muestra puntos simulando cada
+     * casilla.
      *
-     * Mustra el tablero, pero los números no quedan alineados con el tablero.
-     * No muestra puntos simulando cada casilla.
-     *
+     * @see Tablero#mostrar() mostrar.
      */
     public void mostrar2() {
         // Mostrar el tablero
@@ -84,7 +84,7 @@ public class Tablero {
      * (tablero) la ficha.
      *
      * Dependiendo del atributo "isBlancas" del objeto Movimiento la ficha será
-     * balnca (0) o negra (1).
+     * blanca (0) o negra (1).
      *
      * @param m Movimiento
      */
@@ -102,6 +102,12 @@ public class Tablero {
         }
     }
 
+    /**
+     * Comprueba si en alguna fila del tablero hay tres en raya.
+     *
+     * @return <i>False</i> si no hay tres en raya; <i>True</i> si hay tres en
+     * raya.
+     */
     private boolean comprobarFilas() {
 
         //filas
@@ -117,6 +123,12 @@ public class Tablero {
         return false;
     }
 
+    /**
+     * Comprueba si en alguna columna del tablero hay tres en raya.
+     *
+     * @return <i>False</i> si no hay tres en raya; <i>True</i> si hay tres en
+     * raya.
+     */
     private boolean comprobarColumnas() {
 
         //columnas
@@ -132,6 +144,12 @@ public class Tablero {
         return false;
     }
 
+    /**
+     * Comprueba si en alguna diagonal del tablero hay tres en raya.
+     *
+     * @return <i>False</i> si no hay tres en raya; <i>True</i> si hay tres en
+     * raya.
+     */
     private boolean comprobarDiagonal() {
 
         for (int i = 0; i < 3; i++) {
@@ -150,6 +168,11 @@ public class Tablero {
         return false;
     }
 
+    /**
+     * Comprueba si el tablero está lleno o no.
+     *
+     * @return <i>False</i> si no está lleno; <i>True</i> si está lleno.
+     */
     public boolean tableroLleno() {
 
         for (int fil = 0; fil < 3; fil++) {
