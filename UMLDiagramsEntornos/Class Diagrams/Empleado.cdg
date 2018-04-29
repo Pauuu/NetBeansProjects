@@ -26,7 +26,9 @@
       <Methods>
         <Method name="calculoCosteProduccion" returnType="void" visibility="public"/>
         <Method name="calculoCosteAnyo" returnType="void" visibility="public"/>
-        <Method name="calculoCosteDespido" returnType="void" visibility="public"/>
+        <Method name="calculoCosteDespido" returnType="void" visibility="public">
+          <Argument type="Empleado" name="e"/>
+        </Method>
       </Methods>
     </Class>
   </ClassDiagramComponents>

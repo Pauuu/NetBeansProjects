@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Concesionarios">
+  <ClassDiagramComponents>
+    <Class name="Concesionario" package="" visibility="public" xPosition="544.0" yPosition="199.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Coche" package="" visibility="public" xPosition="865.0" yPosition="411.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RedConcesionarios" package="" visibility="public" xPosition="329.0" yPosition="159.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

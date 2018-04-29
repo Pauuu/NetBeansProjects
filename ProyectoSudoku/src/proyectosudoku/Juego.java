@@ -5,54 +5,65 @@ import javax.swing.*;
 
 public class Juego extends JFrame {
 
-    private Cronometro crono;
+    private Partida partida;
     private Semaforo semaforo;
-    private Tablero teablero;
 
     public Juego() {
         super("Sudokus");
+
         this.mostrarVentana();
-        this.iniciarPartida();
+       
     }
 
-    public void iniciarPartida() {
-        Partida p = new Partida();
-
-    }
-
-    public void reiniciarPartida() {
-
-    }
 
     public void mostrarVentana() {
 
         this.setSize(1200, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Container cp = getContentPane();
+
         //Panel principal o MAIN
         JPanel mainPanel = new JPanel(new GridBagLayout());
         
-        //PANEL SUDOKU
-        JPanel jpSudoku = new JPanel(new GridLayout(9, 9));
-
-        for (int boton = 0; boton < 81; boton++) {
-            JButton b = new JButton();
-            b.setP
-            jpSudoku.add(new Button("··"));
-        }
-
-        mainPanel.add(jpSudoku);
-
-        //PANEL INFO
-        JPanel jpInfo = new JPanel(new GridBagLayout());
-        JLabel jlCrono = new JLabel("00:00");
+        //NUEVA PARTIDA
+        this.crearNuevaPartida(mainPanel);
         
-        jpInfo.add(jlCrono);
-        mainPanel.add(jpInfo);
+        //BOTON NUEVA PARTIDA
+        this.botonNuevaPartida(mainPanel);
+
+        //SEMAFORO
+        this.mostrarSemaforo(mainPanel);
+
         
-        //CONTAINER:
-        Container cp = getContentPane();
+        //PANEL 
         cp.add(mainPanel);
 
     }
+
+    private void crearNuevaPartida(JPanel mainPanel) {
+        partida = new Partida(mainPanel);
+    }
+
+    private void botonNuevaPartida(JPanel mainPanel) {
+        JButton nuevaPartida = new JButton("Nueva Partida");
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 1;
+        c.gridy = 0;
+
+        mainPanel.add(nuevaPartida, c);
+    }
+
+    private void mostrarSemaforo(JPanel mainPanel) {
+        JLabel imgSemaforo = new JLabel("Semaforo");
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 1;
+        c.gridy = 1;
+
+        mainPanel.add(imgSemaforo, c);
+    }
+
+
 }
