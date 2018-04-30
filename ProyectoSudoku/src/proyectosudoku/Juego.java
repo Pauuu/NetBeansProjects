@@ -9,7 +9,7 @@ public class Juego extends JFrame {
     private Semaforo semaforo;
 
     public Juego() {
-        super("Sudokus");
+        super("Proyecto Sudoku");
 
         this.mostrarVentana();
        
@@ -27,13 +27,13 @@ public class Juego extends JFrame {
         JPanel mainPanel = new JPanel(new GridBagLayout());
         
         //NUEVA PARTIDA
-        this.crearNuevaPartida(mainPanel);
+        this.mostrarTablero(mainPanel);
         
         //BOTON NUEVA PARTIDA
-        this.botonNuevaPartida(mainPanel);
+        //this.botonNuevaPartida(mainPanel);
 
         //SEMAFORO
-        this.mostrarSemaforo(mainPanel);
+        //this.mostrarSemaforo(mainPanel);
 
         
         //PANEL 
@@ -41,7 +41,7 @@ public class Juego extends JFrame {
 
     }
 
-    private void crearNuevaPartida(JPanel mainPanel) {
+    private void mostrarTablero(JPanel mainPanel) {
         partida = new Partida(mainPanel);
     }
 

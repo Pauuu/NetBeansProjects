@@ -1,14 +1,18 @@
 package proyectosudoku;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
-public class Casilla extends JButton {
+public class Casilla extends JTextField {
 
     private boolean valValido;
     private int valor;
 
-    public Casilla(String str) {
-        this.setText(str);
+    public Casilla() {
+        
+        this.setPreferredSize(new Dimension(100, 100));
     }
 
     public int getValor(int fila, int col) {
