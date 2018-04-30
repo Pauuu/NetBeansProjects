@@ -5,12 +5,12 @@ import javax.swing.*;
 
 public class Tablero extends JPanel {
 
-    private CasillaFija[][] casillaFija;
+    private Casilla[][] casilla;
     private JPanel jpSudoku;
     //private int[][] sudoku;
 
     public Tablero() {
-        casillaFija = new CasillaFija[9][9];
+        casilla = new Casilla[9][9];
         jpSudoku = new JPanel(new GridLayout(9, 9));
 
         //this.addCasillasFijas();
@@ -20,28 +20,55 @@ public class Tablero extends JPanel {
         return this.jpSudoku;
     }
 
+    /**
+     * @deprecated no usar
+     *
+     * @param valoresSudoku
+     */
     public void setValoresSudoku(int[][] valoresSudoku) {
 
         for (int fil = 0; fil < 9; fil++) {
             for (int col = 0; col < 9; col++) {
 
                 if (valoresSudoku[fil][col] != 0) {
-                    casillaFija[fil][col].setText(Integer.toString(valoresSudoku[fil][col]));
+                    casilla[fil][col].setText(Integer.toString(valoresSudoku[fil][col]));
                 }
             }
         }
     }
 
-    private void addCasillasFijas(int[][] valoresSudoku) {
+    public void setValores(int[][] valoresSudoku) {
         for (int fil = 0; fil < 9; fil++) {
             for (int col = 0; col < 9; col++) {
-                
-                 if (valoresSudoku[fil][col] != 0) {
-                     
-                     CasillaFija casilla = new CasillaFija(Integer.toString(valoresSudoku[fil][col]));
-                     casillaFija[fil][col] = casilla;
-                     jpSudoku.add(casilla);
-                 }
+
+                if (valoresSudoku[fil][col] > 0) {
+                    this.addCasillaFija(valoresSudoku[fil][col], fil, col);
+                    
+                } else {
+                    this.addCasillaVariable(fil, col);
+                }
+            }
+        }
+    }
+
+    private void addCasillaFija(int valor, int fil, int col) {
+
+        CasillaFija casillaF = new CasillaFija(Integer.toString(valor));
+        casilla[fil][col] = casillaF;
+        jpSudoku.add(casillaF);
+    }
+
+    private void addCasillaVariable(int fil, int col) {
+        
+        CasillaVariable casillaV = new CasillaVariable("·");
+        casilla[fil][col] = casillaV;
+        jpSudoku.add(casillaV);
+    }
+
+    private void addCasillasVariables() {
+        for (int fil = 0; fil < 9; fil++) {
+            for (int col = 0; col < 9; col++) {
+
             }
         }
     }

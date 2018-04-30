@@ -19,7 +19,7 @@ public class Partida {
 
     public void cargarSudoku(int id) {
         Sudoku sk = new Sudoku();
-        this.tablero.setValoresSudoku(sk.getValoresSudoku(id));
+        this.tablero.setValores(sk.getValoresSudoku(id));
 
         //this.pasarNumerosFijos(enunciadoSudoku);
     }
