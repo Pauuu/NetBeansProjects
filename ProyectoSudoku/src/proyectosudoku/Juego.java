@@ -1,58 +1,59 @@
 package proyectosudoku;
 
 import java.awt.*;
+import java.util.Scanner;
 import javax.swing.*;
 
 public class Juego extends JFrame {
 
+    private JPanel panel, panelTablero;
     private Partida partida;
     private Semaforo semaforo;
 
     public Juego() {
         super("Proyecto Sudoku");
 
-        this.mostrarVentana();
-       
-    }
+        this.nuevaPartida(1);
 
+        this.mostrarVentana();
+    }
 
     public void mostrarVentana() {
 
-        this.setSize(1200, 800);
+        this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container cp = getContentPane();
 
         //Panel principal o MAIN
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        
+        panel = new JPanel(new GridBagLayout());
+
         //NUEVA PARTIDA
-        this.mostrarTablero(mainPanel);
-        
+        this.mostrarTablero(panel);
+
         //BOTON NUEVA PARTIDA
-        //this.botonNuevaPartida(mainPanel);
+        this.botonNuevaPartida(panel);
 
         //SEMAFORO
-        //this.mostrarSemaforo(mainPanel);
+        this.mostrarSemaforo(panel);
 
-        
         //PANEL 
-        cp.add(mainPanel);
-
-    }
-
-    private void mostrarTablero(JPanel mainPanel) {
-        partida = new Partida(mainPanel);
+        cp.add(panel);
     }
 
     private void botonNuevaPartida(JPanel mainPanel) {
-        JButton nuevaPartida = new JButton("Nueva Partida");
+        JButton jbNuevaPartida = new JButton("Nueva Partida");
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 0;
+        c.insets = new Insets(0,0,0,0);
 
-        mainPanel.add(nuevaPartida, c);
+        mainPanel.add(jbNuevaPartida, c);
+
+        EventoNuevaPartida evento = new EventoNuevaPartida(this);
+        jbNuevaPartida.addActionListener(evento);
+
     }
 
     private void mostrarSemaforo(JPanel mainPanel) {
@@ -61,9 +62,50 @@ public class Juego extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 1;
+        c.insets = new Insets(-550,0,00,0);
+        
 
         mainPanel.add(imgSemaforo, c);
     }
 
+    private void mostrarTablero(JPanel mainPanel) {
+
+        panelTablero = partida.getTablero().getJPanel();
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0; 
+       c.gridheight = 1;
+        c.gridwidth = 1;
+        c.fill = GridBagConstraints.BOTH;
+       
+
+        mainPanel.add(panelTablero, c);
+    }
+
+    public void nuevaPartida(int id) {
+
+        Sudoku sk = new Sudoku();
+        partida = new Partida();
+
+        partida.setSudoku(sk.getValoresSudoku(id));
+    }
+
+    //Getters & Setters
+    public Partida getPartida() {
+        return this.partida;
+    }
+
+    public void setPartida(Partida p) {
+
+        this.panel.remove(panelTablero);
+        this.partida = p;
+        this.mostrarTablero(panel);
+
+        System.out.println("pipi");
+
+        this.revalidate();
+        this.repaint();
+    }
 
 }

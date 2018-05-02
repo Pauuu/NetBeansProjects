@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication40;
 
 import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
@@ -46,12 +40,9 @@ public class BotonVentana extends JFrame {
             mainPanel.add(b, c);
         }
 
-        
-        
-        //mainPanel.add(opciones, c);
+     
 
         cp.add(mainPanel);
         
     }
-
 }

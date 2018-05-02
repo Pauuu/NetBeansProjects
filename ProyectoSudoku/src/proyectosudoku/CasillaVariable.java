@@ -9,6 +9,7 @@ public class CasillaVariable extends Casilla {
 
         this.setFont(new Font("Courier", Font.BOLD, 40));
         this.setText(str);
+       
     }
 
     public void introducirValor() {

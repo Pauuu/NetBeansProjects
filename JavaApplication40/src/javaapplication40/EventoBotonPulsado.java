@@ -8,6 +8,7 @@ import javax.swing.*;
 public class EventoBotonPulsado implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
+        
         String str = e.getActionCommand();
         JButton boton = (JButton) e.getSource();
 
@@ -23,16 +24,5 @@ public class EventoBotonPulsado implements ActionListener {
                 break;
             }
         }
-
-    }
-
-    private void cambioNum(ActionEvent e) {
-        JButton casilla = (JButton) e.getSource();
-
-        casilla.setText("nada de momento");
-    }
-
-    private void elegirNum(ActionEvent e) {
-        JButton casilla = (JButton) e.getSource();
     }
 }
