@@ -5,21 +5,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class EventoCasillaPulsada implements ActionListener {
-
+    
     public EventoCasillaPulsada() {
-
+        
     }
 
     //mas cambio de semaforo
     public void actionPerformed(ActionEvent e) {
-
+        
         JButton jbCasilla = (JButton) e.getSource();
         Casilla casilla = (Casilla) e.getSource();
+        Tablero tablero = casilla.getTablero();
+        Semaforo semaforo = tablero.getPartida().getJuego().getSemaforo();
+        
         String numCasilla;
-
+        
         int num = casilla.getValor();
         num++;
-
+        
         if (num == 10 || num == 0) {
             num = 1;
         }
@@ -30,9 +33,16 @@ public class EventoCasillaPulsada implements ActionListener {
         //casilla recive el valor que debe mostrar por pantalla
         numCasilla = Integer.toString(num);
         jbCasilla.setText(numCasilla);
-
-        this.comprobarValores(e);
-
+        
+        if (!tablero.validarMov()) {
+            semaforo.cambioColor(0);
+            
+        } else if (!tablero.validarVictoria()) {
+            semaforo.cambioColor(1);
+            
+        } else {
+            semaforo.cambioColor(2);
+        }
     }
 
     /*

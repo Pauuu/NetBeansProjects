@@ -31,10 +31,10 @@ public class Tablero extends JPanel {
         if (!this.validarCols(valoresCasillas)) {
             return false;
 
-        } else if (this.validarFils(valoresCasillas)) {
+        } else if (!this.validarFils(valoresCasillas)) {
             return false;
 
-        } else if (this.validarSectores(valoresCasillas)) {
+        } else if (!this.validarSectores(valoresCasillas)) {
             return false;
 
         } else {
@@ -67,10 +67,10 @@ public class Tablero extends JPanel {
     private boolean comprobarValores(int valores[]) {
 
         for (int num = 0; num < 8; num++) {
-            if (num != 0) {
+            if (valores[num] != 0) {
 
                 for (int pivote = num + 1; pivote < 9; pivote++) {
-                    if (pivote != 0) {
+                    if (valores[pivote] != 0) {
 
                         if (valores[num] == valores[pivote]) {
                             return false;

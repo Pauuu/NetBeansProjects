@@ -9,6 +9,7 @@ public class Juego extends JFrame {
     private JPanel panel, panelTablero;
     private Partida partida;
     private Semaforo semaforo;
+    private int idSudokuActual;
 
     public Juego() {
         super("Proyecto Sudoku");
@@ -88,31 +89,38 @@ public class Juego extends JFrame {
 
     public void nuevaPartida(int id) {
 
-        Sudoku sk = new Sudoku();
         partida = new Partida(this);
+        Sudoku sk = new Sudoku();
 
-        partida.setSudoku(sk.getValoresSudoku(id));
+        this.idSudokuActual = id;
+        
+        partida.setSudoku(sk.getValoresSudoku(idSudokuActual));
     }
 
     //Getters & Setters
     public Partida getPartida() {
         return this.partida;
     }
-    
-    public Semaforo getSemaforo(){
+
+    public Semaforo getSemaforo() {
         return this.semaforo;
+    }
+    
+    public int getIdSudokuActual(){
+        return this.idSudokuActual;
+    }
+    
+    public void setIdSudokuActual(int id){
+        this.idSudokuActual = id;
     }
 
     public void setPartida(Partida p) {
 
         this.panel.remove(panelTablero);
         this.partida = p;
+
         this.mostrarTablero(panel);
-
-        System.out.println("pipi");
-
         this.revalidate();
         this.repaint();
     }
-
 }
