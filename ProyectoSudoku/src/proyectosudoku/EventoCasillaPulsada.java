@@ -113,6 +113,7 @@ public class EventoCasillaPulsada implements ActionListener {
         return true;
     }
      */
+ /*
     private boolean comprobarVictoria(Tablero t) {
 
         int[] aux = new int[9];
@@ -161,4 +162,5 @@ public class EventoCasillaPulsada implements ActionListener {
 
         return true;
     }
+     */
 }

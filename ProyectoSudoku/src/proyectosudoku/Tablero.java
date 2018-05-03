@@ -42,6 +42,28 @@ public class Tablero extends JPanel {
         }
     }
 
+    public boolean validarVictoria() {
+
+        int valoresCasillas[][];
+        int total;
+
+        valoresCasillas = this.getValoresCasillas().clone();
+
+        for (int fil = 0; fil < 9; fil++) {
+
+            total = 0;
+            for (int col = 0; col < 9; col++) {
+                total = total + valoresCasillas[fil][col];
+            }
+
+            if (total != 45) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private boolean comprobarValores(int valores[]) {
 
         for (int num = 0; num < 8; num++) {
