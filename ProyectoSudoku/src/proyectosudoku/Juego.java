@@ -13,14 +13,13 @@ public class Juego extends JFrame {
     public Juego() {
         super("Proyecto Sudoku");
 
-        this.nuevaPartida(1);
-
+        this.nuevaPartida(0);
         this.mostrarVentana();
     }
 
     public void mostrarVentana() {
 
-        this.setSize(800, 800);
+        this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Container cp = getContentPane();
@@ -47,7 +46,9 @@ public class Juego extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 0;
-        c.insets = new Insets(0,0,0,0);
+        c.ipadx = 200;
+        c.ipady = 50;
+        c.insets = new Insets(-450, 0, 0, 0);
 
         mainPanel.add(jbNuevaPartida, c);
 
@@ -57,13 +58,16 @@ public class Juego extends JFrame {
     }
 
     private void mostrarSemaforo(JPanel mainPanel) {
-        JLabel imgSemaforo = new JLabel("Semaforo");
+
+        JPanel imgSemaforo = new JPanel(new GridLayout(1, 1));
+        semaforo = new Semaforo();
+
+        imgSemaforo.add(semaforo);
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 1;
-        c.insets = new Insets(-550,0,00,0);
-        
+        c.insets = new Insets(-500, 0, 00, 0);
 
         mainPanel.add(imgSemaforo, c);
     }
@@ -74,11 +78,10 @@ public class Juego extends JFrame {
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
-        c.gridy = 0; 
-       c.gridheight = 1;
+        c.gridy = 0;
+        c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-       
 
         mainPanel.add(panelTablero, c);
     }
@@ -86,7 +89,7 @@ public class Juego extends JFrame {
     public void nuevaPartida(int id) {
 
         Sudoku sk = new Sudoku();
-        partida = new Partida();
+        partida = new Partida(this);
 
         partida.setSudoku(sk.getValoresSudoku(id));
     }
@@ -94,6 +97,10 @@ public class Juego extends JFrame {
     //Getters & Setters
     public Partida getPartida() {
         return this.partida;
+    }
+    
+    public Semaforo getSemaforo(){
+        return this.semaforo;
     }
 
     public void setPartida(Partida p) {

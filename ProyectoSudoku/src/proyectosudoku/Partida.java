@@ -1,16 +1,16 @@
 package proyectosudoku;
 
-
 import javax.swing.JButton;
 
 public class Partida extends JButton {
 
+    private Juego juego;
     private Tablero tablero;
 
     //Constructor
-    public Partida() {
-        tablero = new Tablero();
-        
+    public Partida(Juego j) {
+        this.juego = j;
+        this.tablero = new Tablero(this);
     }
 
     //Públicos
@@ -23,5 +23,10 @@ public class Partida extends JButton {
     //Getters & Setters
     public Tablero getTablero() {
         return this.tablero;
+    }
+
+
+    public Juego getJuego() {
+        return this.juego;
     }
 }

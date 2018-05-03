@@ -11,8 +11,4 @@ public class CasillaVariable extends Casilla {
         this.setText(str);
        
     }
-
-    public void introducirValor() {
-
-    }
 }
