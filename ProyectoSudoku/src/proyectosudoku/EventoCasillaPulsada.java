@@ -35,6 +35,7 @@ public class EventoCasillaPulsada implements ActionListener {
 
     }
 
+    /*
     public void comprobarValores(ActionEvent e) {
 
         Casilla c = (Casilla) e.getSource();
@@ -55,6 +56,8 @@ public class EventoCasillaPulsada implements ActionListener {
 
     }
 
+     */
+ /*
     private boolean comprobarCasillas(int[] lista) {
 
         for (int num = 0; num < 8; num++) {
@@ -109,7 +112,7 @@ public class EventoCasillaPulsada implements ActionListener {
 
         return true;
     }
-
+     */
     private boolean comprobarVictoria(Tablero t) {
 
         int[] aux = new int[9];
@@ -124,7 +127,6 @@ public class EventoCasillaPulsada implements ActionListener {
             }
 
             if (total != 45) {
-                System.out.println("caca");
                 return false;
             }
         }
