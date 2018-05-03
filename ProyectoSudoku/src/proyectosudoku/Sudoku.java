@@ -1,7 +1,6 @@
 package proyectosudoku;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Sudoku {
 
@@ -22,7 +21,7 @@ public class Sudoku {
             {7, 6, 5, 1, 0, 2, 3, 0, 8}
         };
         this.listaSudokus.add(sudoku1);
-        
+
         int[][] sudoku2 = {
             {6, 3, 2, 7, 8, 1, 9, 4, 5},
             {4, 8, 7, 5, 9, 6, 2, 1, 3},
@@ -36,35 +35,18 @@ public class Sudoku {
         };
         this.listaSudokus.add(sudoku2);
 
-        
     }
 
     /**
-     * @deprecated no hace lo que tenia en mente
-     */
-    private void addSudoku() {
-        int[][] sudoku1 = {
-            {5, 0, 0, 4, 0, 1, 9, 6, 3},
-            {4, 0, 0, 0, 0, 7, 0, 0, 0},
-            {9, 0, 3, 8, 0, 0, 1, 0, 0},
-            {8, 7, 0, 3, 0, 9, 6, 0, 1},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {6, 0, 1, 2, 0, 4, 0, 3, 9},
-            {0, 0, 9, 0, 0, 6, 7, 0, 4},
-            {0, 0, 0, 7, 0, 0, 0, 0, 6},
-            {7, 6, 5, 1, 0, 2, 3, 0, 8}
-        };
-
-        this.listaSudokus.add(sudoku1);
-    }
-
-    /**
-     * 
+     *
      * @param ID del ArrayList
-     * @return 
+     * @return
      */
     public int[][] getValoresSudoku(int id) {
-        
         return listaSudokus.get(id);
+    }
+
+    public ArrayList getListaSudokus() {
+        return this.listaSudokus;
     }
 }

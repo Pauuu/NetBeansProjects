@@ -5,21 +5,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class EventoCasillaPulsada implements ActionListener {
-
+    
     public EventoCasillaPulsada() {
-
+        
     }
 
     //mas cambio de semaforo
     public void actionPerformed(ActionEvent e) {
-
+        
         JButton jbCasilla = (JButton) e.getSource();
         Casilla casilla = (Casilla) e.getSource();
+        Tablero tablero = casilla.getTablero();
+        Semaforo semaforo = tablero.getPartida().getJuego().getSemaforo();
+        
         String numCasilla;
-
+        
         int num = casilla.getValor();
         num++;
-
+        
         if (num == 10 || num == 0) {
             num = 1;
         }
@@ -30,11 +33,19 @@ public class EventoCasillaPulsada implements ActionListener {
         //casilla recive el valor que debe mostrar por pantalla
         numCasilla = Integer.toString(num);
         jbCasilla.setText(numCasilla);
-
-        this.comprobarValores(e);
-
+        
+        if (!tablero.validarMov()) {
+            semaforo.cambioColor(0);
+            
+        } else if (!tablero.validarVictoria()) {
+            semaforo.cambioColor(1);
+            
+        } else {
+            semaforo.cambioColor(2);
+        }
     }
 
+    /*
     public void comprobarValores(ActionEvent e) {
 
         Casilla c = (Casilla) e.getSource();
@@ -55,6 +66,8 @@ public class EventoCasillaPulsada implements ActionListener {
 
     }
 
+     */
+ /*
     private boolean comprobarCasillas(int[] lista) {
 
         for (int num = 0; num < 8; num++) {
@@ -109,7 +122,8 @@ public class EventoCasillaPulsada implements ActionListener {
 
         return true;
     }
-
+     */
+ /*
     private boolean comprobarVictoria(Tablero t) {
 
         int[] aux = new int[9];
@@ -124,7 +138,6 @@ public class EventoCasillaPulsada implements ActionListener {
             }
 
             if (total != 45) {
-                System.out.println("caca");
                 return false;
             }
         }
@@ -159,4 +172,5 @@ public class EventoCasillaPulsada implements ActionListener {
 
         return true;
     }
+     */
 }
