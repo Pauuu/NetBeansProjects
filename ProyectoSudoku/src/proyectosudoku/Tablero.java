@@ -23,8 +23,6 @@ public class Tablero extends JPanel {
         return this.jpSudoku;
     }
 
-
-
     public boolean validarMov() {
 
         int valoresCasillas[][];
@@ -32,19 +30,19 @@ public class Tablero extends JPanel {
 
         if (!this.validarCols(valoresCasillas)) {
             return false;
-            
+
         } else if (this.validarFils(valoresCasillas)) {
             return false;
-            
+
         } else if (this.validarSectores(valoresCasillas)) {
             return false;
-            
+
         } else {
             return true;
         }
     }
-    
-        private boolean comprobarValores(int valores[]) {
+
+    private boolean comprobarValores(int valores[]) {
 
         for (int num = 0; num < 8; num++) {
             if (num != 0) {
