@@ -127,7 +127,11 @@ public class Tablero extends JPanel implements ActionListener {
         return true;
     }
 
-    private boolean validarSectores() {
+    /**
+     * Mejorar método
+     * @return 
+     */
+    private boolean validarSectores() { 
 
         int aux; //auxiliar
         int valores[] = new int[9];
@@ -147,7 +151,7 @@ public class Tablero extends JPanel implements ActionListener {
                 }
 
                 if (!this.comprobarRepetido(valores)) {
-                    return false; //==============valor repetido==========>>
+                    return false; //==============valor repetido==============>>
                 }
             }
         }
