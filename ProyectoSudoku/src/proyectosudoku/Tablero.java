@@ -27,10 +27,10 @@ public class Tablero extends JPanel implements ActionListener {
 
     public boolean validarMov() {
 
-        if (!this.validarCols()) {
+        if (!this.validarFils()) {
             return false;
 
-        } else if (!this.validarFils()) {
+        } else if (!this.validarCols()) {
             return false;
 
         } else if (!this.validarSectores()) {
@@ -63,18 +63,42 @@ public class Tablero extends JPanel implements ActionListener {
         return true;
     }
 
-    private boolean comprobarValores(int valores[]) {
+    private boolean comprobarRepetido(int valores[]) {
 
-        for (int num = 0; num < 8; num++) {
-            if (valores[num] != 0) {
+        boolean check[] = new boolean[9];
+        int valor;
 
-                for (int pivote = num + 1; pivote < 9; pivote++) {
-                    if (valores[pivote] != 0) {
+        for (int i = 0; i < 9; i++) {
+            check[i] = false;
+        }
 
-                        if (valores[num] == valores[pivote]) {
-                            return false;
-                        }
-                    }
+        for (int pos = 0; pos < 9; pos++) {
+            valor = valores[pos];
+            
+            if (valor != 0) {
+                if (check[valor - 1] == true) {
+                    return false; //==============valores repetidos===========>>
+                }
+
+                check[valor - 1] = true;
+            }
+        }
+
+        return true; //===================no hay valores repetidos============>>
+    }
+
+    private boolean validarFils() {
+
+        int valores[] = new int[9];
+
+        //valida todas las filas:
+        for (int fil = 0; fil < 9; fil++) {
+            for (int col = 0; col < 9; col++) {
+                
+                valores[col] = this.casillas[fil][col].getValor();
+                
+                if (!this.comprobarRepetido(valores)){
+                    return false;
                 }
             }
         }
@@ -84,35 +108,26 @@ public class Tablero extends JPanel implements ActionListener {
 
     private boolean validarCols() {
 
-        int valores[] = new int[9];
-
-        //valida todas las filas:
-        for (int fil = 0; fil < 9; fil++) {
-            for (int col = 0; col < 9; col++) {
-                valores[col] = this.casillas[fil][col].getValor();
-            }
-
-            // si jugador comete un error:
-            if (!this.comprobarValores(valores)) {
-                return false;    //=================no validado===============>>
-            }
-        }
-        return true;
-    }
-
-    private boolean validarFils() {
-
-        int valores[] = new int[9];
+        boolean check[] = new boolean[9];
+        int valor;
 
         //valida todas las columnas:
         for (int col = 0; col < 9; col++) {
-            for (int fil = 0; fil < 9; fil++) {
-                valores[fil] = this.casillas[fil][col].getValor();
+
+            for (int i = 0; i < 9; i++) {
+                check[i] = false;
             }
 
-            // si jugador comete un error:
-            if (!this.comprobarValores(valores)) {
-                return false;    //=================no validado===============>>
+            for (int fil = 0; fil < 9; fil++) {
+                valor = this.casillas[fil][col].getValor();
+
+                if (valor != 0) {
+                    if (check[valor - 1] == true) {
+                        return false;
+                    }
+
+                    check[valor - 1] = true;
+                }
             }
         }
 
@@ -121,24 +136,29 @@ public class Tablero extends JPanel implements ActionListener {
 
     private boolean validarSectores() {
 
-        int[] valores = new int[9];
+        boolean check[] = new boolean[9];
+        int valor;
 
         for (int sectorX = 0; sectorX < 3; sectorX++) {
             for (int sectorY = 0; sectorY < 3; sectorY++) {
 
-                int pos = 0;
+                for (int i = 0; i < 9; i++) {
+                    check[i] = false;
+                }
 
                 for (int fil = sectorX * 3; fil < (sectorX * 3) + 3; fil++) {
                     for (int col = sectorY * 3; col < (sectorY * 3) + 3; col++) {
 
-                        valores[pos] = this.casillas[fil][col].getValor();
-                        pos++;
-                    }
-                }
+                        valor = this.casillas[fil][col].getValor();
 
-                // si hay un error:
-                if (!this.comprobarValores(valores)) {
-                    return false;   //===============no validado==============>>
+                        if (valor != 0) {
+                            if (check[valor - 1] == true) {
+                                return false;
+                            }
+
+                            check[valor - 1] = true;
+                        }
+                    }
                 }
             }
         }
@@ -149,10 +169,10 @@ public class Tablero extends JPanel implements ActionListener {
     private void addCasillaFija(int valor, int fil, int col) {
 
         CasillaFija casillaF = new CasillaFija(this);
+
         casillaF.setText(Integer.toString(valor));
 
         casillas[fil][col] = casillaF;
-
         casillas[fil][col].setValor(valor);
         casillas[fil][col].setTablero(this);
 
@@ -164,7 +184,6 @@ public class Tablero extends JPanel implements ActionListener {
         CasillaVariable casillaV = new CasillaVariable(this);
 
         casillas[fil][col] = casillaV;
-
         casillas[fil][col].addActionListener(this);
         casillas[fil][col].setTablero(this);
 
@@ -219,6 +238,8 @@ public class Tablero extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        int num;
+
         JButton jbCasilla = (JButton) e.getSource();
         Casilla casilla = (Casilla) e.getSource();
         Tablero tablero = this;
@@ -226,7 +247,7 @@ public class Tablero extends JPanel implements ActionListener {
 
         String numCasilla;
 
-        int num = casilla.getValor();
+        num = casilla.getValor();
         num++;
 
         if (num == 10 || num == 0) {
@@ -240,10 +261,10 @@ public class Tablero extends JPanel implements ActionListener {
         numCasilla = Integer.toString(num);
         jbCasilla.setText(numCasilla);
 
-        if (!tablero.validarMov()) {
+        if (!tablero.validarMov()) { //valida si el movimiento es correcto
             semaforo.cambioColor(0);
 
-        } else if (!tablero.validarVictoria()) {
+        } else if (!tablero.validarVictoria()) { //valida si ha ganado o no
             semaforo.cambioColor(1);
 
         } else {
