@@ -74,7 +74,7 @@ public class Tablero extends JPanel implements ActionListener {
 
         for (int pos = 0; pos < 9; pos++) {
             valor = valores[pos];
-            
+
             if (valor != 0) {
                 if (check[valor - 1] == true) {
                     return false; //==============valores repetidos===========>>
@@ -91,15 +91,14 @@ public class Tablero extends JPanel implements ActionListener {
 
         int valores[] = new int[9];
 
-        //valida todas las filas:
+        //comprueba todas las filas:
         for (int fil = 0; fil < 9; fil++) {
             for (int col = 0; col < 9; col++) {
-                
                 valores[col] = this.casillas[fil][col].getValor();
-                
-                if (!this.comprobarRepetido(valores)){
-                    return false;
-                }
+            }
+
+            if (!this.comprobarRepetido(valores)) {
+                return false;
             }
         }
 
@@ -108,26 +107,16 @@ public class Tablero extends JPanel implements ActionListener {
 
     private boolean validarCols() {
 
-        boolean check[] = new boolean[9];
-        int valor;
+        int valores[] = new int[9];
 
-        //valida todas las columnas:
+        //comprueba todas las columnas:
         for (int col = 0; col < 9; col++) {
-
-            for (int i = 0; i < 9; i++) {
-                check[i] = false;
+            for (int fil = 0; fil < 9; fil++) {
+                valores[fil] = this.casillas[fil][col].getValor();
             }
 
-            for (int fil = 0; fil < 9; fil++) {
-                valor = this.casillas[fil][col].getValor();
-
-                if (valor != 0) {
-                    if (check[valor - 1] == true) {
-                        return false;
-                    }
-
-                    check[valor - 1] = true;
-                }
+            if (!this.comprobarRepetido(valores)) {
+                return false;
             }
         }
 
