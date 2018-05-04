@@ -5,12 +5,14 @@ import java.awt.Font;
 
 public class CasillaFija extends Casilla {
 
-    public CasillaFija(String str) {
-        super();
+    public CasillaFija(Tablero t) {
+        super(t);
 
         this.setBackground(Color.cyan);
         this.setFont(new Font("Courier", Font.BOLD, 40));
-        this.setText(str);
+        
 
     }
+    
+    
 }

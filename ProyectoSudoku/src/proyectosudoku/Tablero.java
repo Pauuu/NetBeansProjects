@@ -2,9 +2,11 @@ package proyectosudoku;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Tablero extends JPanel {
+public class Tablero extends JPanel implements ActionListener {
 
     private Casilla[][] casillas;
     private JPanel jpSudoku;
@@ -25,16 +27,13 @@ public class Tablero extends JPanel {
 
     public boolean validarMov() {
 
-        int valoresCasillas[][];
-        valoresCasillas = this.getValoresCasillas().clone();
-
-        if (!this.validarCols(valoresCasillas)) {
+        if (!this.validarCols()) {
             return false;
 
-        } else if (!this.validarFils(valoresCasillas)) {
+        } else if (!this.validarFils()) {
             return false;
 
-        } else if (!this.validarSectores(valoresCasillas)) {
+        } else if (!this.validarSectores()) {
             return false;
 
         } else {
@@ -83,14 +82,14 @@ public class Tablero extends JPanel {
         return true;
     }
 
-    private boolean validarCols(int[][] valoresCasillas) {
+    private boolean validarCols() {
 
         int valores[] = new int[9];
 
         //valida todas las filas:
         for (int fil = 0; fil < 9; fil++) {
             for (int col = 0; col < 9; col++) {
-                valores[col] = valoresCasillas[fil][col];
+                valores[col] = this.casillas[fil][col].getValor();
             }
 
             // si jugador comete un error:
@@ -101,14 +100,14 @@ public class Tablero extends JPanel {
         return true;
     }
 
-    private boolean validarFils(int[][] valoresCasillas) {
+    private boolean validarFils() {
 
         int valores[] = new int[9];
 
         //valida todas las columnas:
         for (int col = 0; col < 9; col++) {
             for (int fil = 0; fil < 9; fil++) {
-                valores[fil] = valoresCasillas[fil][col];
+                valores[fil] = this.casillas[fil][col].getValor();
             }
 
             // si jugador comete un error:
@@ -120,7 +119,7 @@ public class Tablero extends JPanel {
         return true;
     }
 
-    private boolean validarSectores(int[][] valoresCasillas) {
+    private boolean validarSectores() {
 
         int[] valores = new int[9];
 
@@ -132,7 +131,7 @@ public class Tablero extends JPanel {
                 for (int fil = sectorX * 3; fil < (sectorX * 3) + 3; fil++) {
                     for (int col = sectorY * 3; col < (sectorY * 3) + 3; col++) {
 
-                        valores[pos] = valoresCasillas[fil][col];
+                        valores[pos] = this.casillas[fil][col].getValor();
                         pos++;
                     }
                 }
@@ -149,7 +148,8 @@ public class Tablero extends JPanel {
 
     private void addCasillaFija(int valor, int fil, int col) {
 
-        CasillaFija casillaF = new CasillaFija(Integer.toString(valor));
+        CasillaFija casillaF = new CasillaFija(this);
+        casillaF.setText(Integer.toString(valor));
 
         casillas[fil][col] = casillaF;
 
@@ -161,12 +161,11 @@ public class Tablero extends JPanel {
 
     private void addCasillaVariable(int fil, int col) {
 
-        CasillaVariable casillaV = new CasillaVariable("");
-        EventoCasillaPulsada evento = new EventoCasillaPulsada();
+        CasillaVariable casillaV = new CasillaVariable(this);
 
         casillas[fil][col] = casillaV;
 
-        casillas[fil][col].addActionListener(evento);
+        casillas[fil][col].addActionListener(this);
         casillas[fil][col].setTablero(this);
 
         jpSudoku.add(casillaV);
@@ -215,4 +214,41 @@ public class Tablero extends JPanel {
             }
         }
     }
+
+    //mas cambio de semaforo
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        JButton jbCasilla = (JButton) e.getSource();
+        Casilla casilla = (Casilla) e.getSource();
+        Tablero tablero = this;
+        Semaforo semaforo = this.partida.getJuego().getSemaforo();
+
+        String numCasilla;
+
+        int num = casilla.getValor();
+        num++;
+
+        if (num == 10 || num == 0) {
+            num = 1;
+        }
+
+        //casilla recive el nuevo valor
+        casilla.setValor(num);
+
+        //casilla recive el valor que debe mostrar por pantalla
+        numCasilla = Integer.toString(num);
+        jbCasilla.setText(numCasilla);
+
+        if (!tablero.validarMov()) {
+            semaforo.cambioColor(0);
+
+        } else if (!tablero.validarVictoria()) {
+            semaforo.cambioColor(1);
+
+        } else {
+            semaforo.cambioColor(2);
+        }
+    }
+
 }

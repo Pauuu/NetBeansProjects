@@ -45,8 +45,9 @@ public class Sudoku {
     public int[][] getValoresSudoku(int id) {
         return listaSudokus.get(id);
     }
-
-    public ArrayList getListaSudokus() {
-        return this.listaSudokus;
+    
+    public int totalSudokus(){
+        return this.listaSudokus.size();
     }
+
 }

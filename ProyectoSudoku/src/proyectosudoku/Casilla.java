@@ -12,8 +12,8 @@ public class Casilla extends JButton {
     private int posY;
     private int valor;
 
-    public Casilla() {
-
+    public Casilla(Tablero t) {
+        
         this.setPreferredSize(new Dimension(60, 60));
     }
 
@@ -25,12 +25,13 @@ public class Casilla extends JButton {
     public Tablero getTablero() {
         return this.tablero;
     }
+    
 
     public int getPosX() {
         return posX;
     }
 
-    public int getposY() {
+    public int getPosY() {
         return posY;
     }
 

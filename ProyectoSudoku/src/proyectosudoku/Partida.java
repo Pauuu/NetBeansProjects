@@ -19,12 +19,9 @@ public class Partida extends JButton {
         this.tablero.setValores(sudoku);
     }
 
-    //Privados
-    //Getters & Setters
     public Tablero getTablero() {
         return this.tablero;
     }
-
 
     public Juego getJuego() {
         return this.juego;

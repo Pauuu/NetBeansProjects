@@ -4,11 +4,11 @@ import java.awt.Font;
 
 public class CasillaVariable extends Casilla {
 
-    public CasillaVariable(String str) {
-        super();
+    public CasillaVariable(Tablero t) {
+        super(t);
 
         this.setFont(new Font("Courier", Font.BOLD, 40));
-        this.setText(str);
-       
+        
+
     }
 }

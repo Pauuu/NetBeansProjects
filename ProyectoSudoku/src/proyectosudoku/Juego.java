@@ -1,10 +1,11 @@
 package proyectosudoku;
 
 import java.awt.*;
-import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Juego extends JFrame {
+public class Juego extends JFrame implements ActionListener {
 
     private JPanel panel, panelTablero;
     private Partida partida;
@@ -49,12 +50,13 @@ public class Juego extends JFrame {
         c.gridy = 0;
         c.ipadx = 200;
         c.ipady = 50;
+        c.weightx = 0.5;
+        c.weighty = 0.5;
         c.insets = new Insets(-450, 0, 0, 0);
 
         mainPanel.add(jbNuevaPartida, c);
 
-        EventoNuevaPartida evento = new EventoNuevaPartida(this);
-        jbNuevaPartida.addActionListener(evento);
+        jbNuevaPartida.addActionListener(this);
 
     }
 
@@ -68,7 +70,8 @@ public class Juego extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 1;
-        c.insets = new Insets(-500, 0, 00, 0);
+
+        c.insets = new Insets(-500, 0, 0, 0);
 
         mainPanel.add(imgSemaforo, c);
     }
@@ -80,9 +83,9 @@ public class Juego extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth = 1;
-        c.fill = GridBagConstraints.BOTH;
+        //c.gridheight = 1;
+        //c.gridwidth = 1;
+        //c.fill = GridBagConstraints.BOTH;
 
         mainPanel.add(panelTablero, c);
     }
@@ -93,7 +96,7 @@ public class Juego extends JFrame {
         Sudoku sk = new Sudoku();
 
         this.idSudokuActual = id;
-        
+
         partida.setSudoku(sk.getValoresSudoku(idSudokuActual));
     }
 
@@ -105,12 +108,12 @@ public class Juego extends JFrame {
     public Semaforo getSemaforo() {
         return this.semaforo;
     }
-    
-    public int getIdSudokuActual(){
+
+    public int getIdSudokuActual() {
         return this.idSudokuActual;
     }
-    
-    public void setIdSudokuActual(int id){
+
+    public void setIdSudokuActual(int id) {
         this.idSudokuActual = id;
     }
 
@@ -123,4 +126,28 @@ public class Juego extends JFrame {
         this.revalidate();
         this.repaint();
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        int totalSudokus, nuevaId, id;
+
+        Partida nuevaPartida = new Partida(this);
+        Sudoku sk = new Sudoku();
+
+        id = this.idSudokuActual;
+        totalSudokus = sk.totalSudokus();
+
+        do {
+            nuevaId = (int) (Math.random() * totalSudokus);
+
+        } while (nuevaId == id);
+
+        this.getSemaforo().cambioColor(1);
+        nuevaPartida.setSudoku(sk.getValoresSudoku(nuevaId));
+
+        this.setPartida(nuevaPartida);
+        this.setIdSudokuActual(nuevaId);    //cambiar??
+    }
+
 }
