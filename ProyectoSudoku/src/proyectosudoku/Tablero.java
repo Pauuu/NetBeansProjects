@@ -94,11 +94,13 @@ public class Tablero extends JPanel implements ActionListener {
         //comprueba todas las filas:
         for (int fil = 0; fil < 9; fil++) {
             for (int col = 0; col < 9; col++) {
+
+                //rellena con valores de una fila
                 valores[col] = this.casillas[fil][col].getValor();
             }
 
             if (!this.comprobarRepetido(valores)) {
-                return false;
+                return false;  //==========valor repetido=====================>>
             }
         }
 
@@ -112,11 +114,13 @@ public class Tablero extends JPanel implements ActionListener {
         //comprueba todas las columnas:
         for (int col = 0; col < 9; col++) {
             for (int fil = 0; fil < 9; fil++) {
+
+                //rellena con valores de una columna
                 valores[fil] = this.casillas[fil][col].getValor();
             }
 
             if (!this.comprobarRepetido(valores)) {
-                return false;
+                return false; //==========valor repetido======================>>
             }
         }
 
@@ -125,29 +129,25 @@ public class Tablero extends JPanel implements ActionListener {
 
     private boolean validarSectores() {
 
-        boolean check[] = new boolean[9];
-        int valor;
+        int aux; //auxiliar
+        int valores[] = new int[9];
 
         for (int sectorX = 0; sectorX < 3; sectorX++) {
             for (int sectorY = 0; sectorY < 3; sectorY++) {
 
-                for (int i = 0; i < 9; i++) {
-                    check[i] = false;
-                }
+                aux = 0;
 
                 for (int fil = sectorX * 3; fil < (sectorX * 3) + 3; fil++) {
                     for (int col = sectorY * 3; col < (sectorY * 3) + 3; col++) {
 
-                        valor = this.casillas[fil][col].getValor();
-
-                        if (valor != 0) {
-                            if (check[valor - 1] == true) {
-                                return false;
-                            }
-
-                            check[valor - 1] = true;
-                        }
+                        //rellena con valores de un sector
+                        valores[aux] = this.casillas[fil][col].getValor();
+                        aux++;
                     }
+                }
+
+                if (!this.comprobarRepetido(valores)) {
+                    return false; //==============valor repetido==========>>
                 }
             }
         }
