@@ -49,7 +49,8 @@ public class City extends JFrame implements Runnable, MouseWheelListener, Action
     public City() {
         this.map = new Map(
                 City.CIUTAT_CM_WIDTH, City.CIUTAT_CM_HEIGHT,
-                City.MAPA_PIX_WIDTH, City.MAPA_PIX_HEIGH);
+                City.MAPA_PIX_WIDTH, City.MAPA_PIX_HEIGH
+        );
 
         this.createFrame();
         this.traffic = new Traffic(this.map.getWays());

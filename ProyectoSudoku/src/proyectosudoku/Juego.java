@@ -23,7 +23,7 @@ public class Juego extends JFrame implements ActionListener {
 
         this.setSize(1000, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        
         Container cp = getContentPane();
 
         //Panel principal o MAIN
